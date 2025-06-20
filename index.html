@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Web Development Performance (Multani Mal Modi College)</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Raleway:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 24px;
+        }
+
+        .progress-section {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        .main-wrapper {
+            margin-bottom: 30px;
+        }
+
+        .progress-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .name-label {
+            width: 100px;
+            font-weight: bold;
+            text-align: right;
+            margin-right: 15px;
+        }
+
+        .progress-bar {
+            position: relative;
+            flex: 1;
+            height: 24px;
+            border-radius: 12px;
+            background-color: #e0e0e0;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 12px 0 0 12px;
+        }
+
+        .score {
+            width: 50px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .sub-container {
+            margin-left: 115px;
+        }
+
+        .sub-wrapper {
+            display: flex;
+            align-items: center;
+            margin: 4px 0;
+        }
+
+        .sub-bar {
+            width: 60%;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .sub-fill {
+            height: 100%;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .sub-label {
+            font-size: 12px;
+            min-width: 140px;
+        }
+
+        /* Unified Dark Blue Color Scheme */
+        .unified-progress {
+            background: linear-gradient(135deg, black, #7c3aed);
+            border-radius: 14px;
+        }
+
+        /* Main progress widths based on scores */
+        .score-85 { width: 85%; }
+        .score-70 { width: 70%; }
+        .score-60 { width: 60%; }
+        .score-45 { width: 45%; }
+        .score-30 { width: 30%; }
+        .score-25 { width: 25%; }
+        .score-15 { width: 15%; }
+        .score-10 { width: 10%; }
+        .score-5 { width: 5%; }
+        .score-2 { width: 2%; }
+
+        /* Sub progress colors - Lighter blue for sub-categories */
+        .sub-unified {
+            background: linear-gradient(135deg, #6d28d9, black);
+            border-radius: 12px;
+        }
+
+        /* Vansh (8.5/10) - High performer */
+        .vansh-innovation { width: 90%; }
+        .vansh-logic { width: 85%; }
+        .vansh-coding { width: 89%; }
+        .vansh-creativity { width: 75%; }
+
+        /* Radika (7/10) - Good performer */
+        .radika-innovation { width: 75%; }
+        .radika-logic { width: 70%; }
+        .radika-coding { width: 25%; }
+        .radika-creativity { width: 60%; }
+
+        /* Sukhpreet (6/10) - Above average */
+        .sukhpreet-innovation { width: 65%; }
+        .sukhpreet-logic { width: 77%; }
+        .sukhpreet-coding { width: 55%; }
+        .sukhpreet-creativity { width: 50%; }
+
+        /* Jap (4.5/10) - Below average */
+        .jap-innovation { width: 50%; }
+        .jap-logic { width: 45%; }
+        .jap-coding { width: 40%; }
+        .jap-creativity { width: 65%; }
+
+        /* Eknoor (3/10) - Low performer */
+        .eknoor-innovation { width: 35%; }
+        .eknoor-logic { width: 13%; }
+        .eknoor-coding { width: 25%; }
+        .eknoor-creativity { width: 9%; }
+
+        /* Arjun (2.5/10) - Very low performer */
+        .arjun-innovation { width: 30%; }
+        .arjun-logic { width: 20%; }
+        .arjun-coding { width: 30%; }
+        .arjun-creativity { width: 10%; }
+
+        /* Rajveer (1.5/10) - Poor performer */
+        .rajveer-innovation { width: 6%; }
+        .rajveer-logic { width: 6%; }
+        .rajveer-coding { width: 12%; }
+        .rajveer-creativity { width: 10%; }
+
+        /* Mehak (1/10) - Very poor performer */
+        .mehak-innovation { width: 5%; }
+        .mehak-logic { width: 10%; }
+        .mehak-coding { width: 8%; }
+        .mehak-creativity { width: 5%; }
+
+        /* Simran (0.5/10) - Extremely poor performer */
+        .simran-innovation { width: 8%; }
+        .simran-logic { width: 5%; }
+        .simran-coding { width: 3%; }
+        .simran-creativity { width: 5%; }
+
+        /* Harleen (0.2/10) - Minimal performer */
+        .harleen-innovation { width: 5%; }
+        .harleen-logic { width: 3%; }
+        .harleen-coding { width: 4%; }
+        .harleen-creativity { width: 1%; }
+
+        .cont1{
+            display: flex;
+            justify-content: space-between;
+            padding: 0px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 style="font-family: 'Orbitron', sans-serif;">Across : Multani Mal Modi College</h1><br>
+    <div class="cont1">
+        <h1 style="font-family: 'Raleway', sans-serif;">Skill: Web Development</h1>
+        <h1 style="font-family: 'Raleway', sans-serif;">Ranked By: HOD Of Computer Science Department</h1>
+    </div><br>
+    <br>
+
+    <div class="progress-section">
+
+        <!-- 1. Vansh -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Vansh</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-85"></div>
+                </div>
+                <div class="score">8.5/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified vansh-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified vansh-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified vansh-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified vansh-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Radika -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Radika</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-70"></div>
+                </div>
+                <div class="score">7/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified radika-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified radika-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified radika-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified radika-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Sukhpreet -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Sukhpreet</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-60"></div>
+                </div>
+                <div class="score">6/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified sukhpreet-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified sukhpreet-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified sukhpreet-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified sukhpreet-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Jap -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Jap</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-45"></div>
+                </div>
+                <div class="score">4.5/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified jap-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified jap-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified jap-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified jap-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Eknoor -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Eknoor</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-30"></div>
+                </div>
+                <div class="score">3/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified eknoor-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified eknoor-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified eknoor-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified eknoor-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Arjun -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Arjun</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-25"></div>
+                </div>
+                <div class="score">2.5/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified arjun-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified arjun-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified arjun-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified arjun-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. Rajveer -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Rajveer</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-15"></div>
+                </div>
+                <div class="score">1.5/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified rajveer-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified rajveer-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified rajveer-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified rajveer-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. Mehak -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Mehak</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-10"></div>
+                </div>
+                <div class="score">1/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified mehak-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified mehak-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified mehak-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified mehak-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. Simran -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Simran</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-5"></div>
+                </div>
+                <div class="score">0.5/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified simran-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified simran-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified simran-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified simran-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. Harleen -->
+        <div class="main-wrapper">
+            <div class="progress-wrapper">
+                <div class="name-label">Harleen</div>
+                <div class="progress-bar">
+                    <div class="progress-fill unified-progress score-2"></div>
+                </div>
+                <div class="score">0.2/10</div>
+            </div>
+            <div class="sub-container">
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified harleen-innovation"></div>
+                    </div>
+                    <div class="sub-label">Innovation</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified harleen-logic"></div>
+                    </div>
+                    <div class="sub-label">Logic Building</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified harleen-coding"></div>
+                    </div>
+                    <div class="sub-label">Coding Skill</div>
+                </div>
+                <div class="sub-wrapper">
+                    <div class="sub-bar">
+                        <div class="sub-fill sub-unified harleen-creativity"></div>
+                    </div>
+                    <div class="sub-label">Technical Creativity</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
