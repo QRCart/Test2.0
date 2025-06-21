@@ -13,590 +13,555 @@
 
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 {
-            margin-top: 20px;
-            font-size: 24px;
-            color: #1e293b;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(-30px) scale(0.9);
-            animation: titleAnimation 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            position: relative;
-            overflow: hidden;
-        }
-
-        h1::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: titleShimmer 2s ease-in-out infinite;
-            animation-delay: 1.5s;
-        }
-
-        h1:hover {
-            transform: translateY(-2px) scale(1.02);
-            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .progress-section {
-            width: 90%;
-            margin: 30px auto;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .main-wrapper {
-            margin-bottom: 30px;
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            animation: slideInLeft 0.6s ease-out forwards;
-            opacity: 0;
-            transform: translateX(-50px);
-        }
-
-        .main-wrapper:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-        }
-
-        .progress-wrapper {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .name-label {
-            width: 100px;
-            font-weight: bold;
-            text-align: left;
-            margin-right: -15px;
-            color: #1e293b;
-            font-size: 16px;
-        }
-
-        .progress-bar {
-            position: relative;
-            flex: 1;
-            height: 28px;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-            overflow: hidden;
-            margin-right: 10px;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .progress-fill {
-            height: 100%;
-            border-radius: 14px 0 0 14px;
-            position: relative;
-            overflow: hidden;
-            animation: fillAnimation 2s ease-out forwards;
-            transform-origin: left;
-            width: 0%;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            animation: shimmer 2s infinite;
-        }
-
-        .score {
-            width: 60px;
-            font-weight: bold;
-            text-align: left;
-            color: #1e293b;
-            font-size: 14px;
-            opacity: 0;
-            animation: fadeIn 0.5s ease-out 1.5s forwards;
-        }
-
-        .sub-container {
-            margin-left: 115px;
-        }
-
-        .sub-wrapper {
-            display: flex;
-            align-items: center;
-            margin: 8px 0;
-        }
-
-        .sub-bar {
-            width: 60%;
-            height: 12px;
-            border-radius: 6px;
-            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-            overflow: hidden;
-            margin-right: 10px;
-            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
-
-        .sub-fill {
-            height: 100%;
-            border-radius: 6px 0 0 6px;
-            position: relative;
-            /* Removed all animations and shimmer effects */
-        }
-
-        .sub-label {
-            font-size: 13px;
-            min-width: 140px;
-            color: #475569;
-            font-weight: 500;
-        }
-
-        /* Animations - kept only for main elements, removed sub-bar animations */
-        @keyframes titleAnimation {
-            0% {
-                opacity: 0;
-                transform: translateY(-30px) scale(0.9);
-            }
-
-            60% {
-                transform: translateY(5px) scale(1.05);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        @keyframes titleShimmer {
-            0% {
-                left: -100%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fillAnimation {
-            from {
-                width: 0%;
-            }
-
-            to {
-                width: var(--target-width);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                left: -100%;
-            }
-
-            100% {
-                left: 100%;
-            }
-        }
-
-        /* Enhanced Gradient Color Scheme */
-        .unified-progress {
-            background: linear-gradient(135deg, #1e293b, #475569, #64748b);
-            position: relative;
-        }
-
-        .unified-progress::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            border-radius: 14px;
-        }
-
-        /* Main progress widths with CSS variables for animation */
-        .score-85 {
-            --target-width: 85%;
-        }
-
-        .score-70 {
-            --target-width: 70%;
-        }
-
-        .score-60 {
-            --target-width: 65%;
-        }
-
-        .score-45 {
-            --target-width: 63%;
-        }
-
-        .score-30 {
-            --target-width: 60%;
-        }
-
-        .score-25 {
-            --target-width: 55%;
-        }
-
-        .score-15 {
-            --target-width: 53%;
-        }
-
-        .score-10 {
-            --target-width: 50%;
-        }
-
-        .score-5 {
-            --target-width: 49%;
-        }
-
-        .score-2 {
-            --target-width: 45%;
-        }
-
-        /* Sub progress colors with enhanced gradients - removed animations */
-        .sub-unified {
-            background: linear-gradient(135deg, #64748b, #94a3b8);
-            border-radius: 6px;
-            position: relative;
-        }
-
-        .sub-unified::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            border-radius: 6px;
-        }
-
-        /* Sub-skill percentages with static widths - no animations */
-        .vansh-innovation {
-            width: 90%;
-        }
-
-        .vansh-logic {
-            width: 85%;
-        }
-
-        .vansh-coding {
-            width: 89%;
-        }
-
-        .vansh-creativity {
-            width: 75%;
-        }
-
-        .radika-innovation {
-            width: 75%;
-        }
-
-        .radika-logic {
-            width: 70%;
-        }
-
-        .radika-coding {
-            width: 25%;
-        }
-
-        .radika-creativity {
-            width: 60%;
-        }
-
-        .sukhpreet-innovation {
-            width: 65%;
-        }
-
-        .sukhpreet-logic {
-            width: 77%;
-        }
-
-        .sukhpreet-coding {
-            width: 55%;
-        }
-
-        .sukhpreet-creativity {
-            width: 50%;
-        }
-
-        .jap-innovation {
-            width: 50%;
-        }
-
-        .jap-logic {
-            width: 45%;
-        }
-
-        .jap-coding {
-            width: 40%;
-        }
-
-        .jap-creativity {
-            width: 65%;
-        }
-
-        .eknoor-innovation {
-            width: 35%;
-        }
-
-        .eknoor-logic {
-            width: 13%;
-        }
-
-        .eknoor-coding {
-            width: 25%;
-        }
-
-        .eknoor-creativity {
-            width: 9%;
-        }
-
-        .arjun-innovation {
-            width: 30%;
-        }
-
-        .arjun-logic {
-            width: 20%;
-        }
-
-        .arjun-coding {
-            width: 30%;
-        }
-
-        .arjun-creativity {
-            width: 10%;
-        }
-
-        .rajveer-innovation {
-            width: 60%;
-        }
-
-        .rajveer-logic {
-            width: 16%;
-        }
-
-        .rajveer-coding {
-            width: 12%;
-        }
-
-        .rajveer-creativity {
-            width: 10%;
-        }
-
-        .mehak-innovation {
-            width: 15%;
-        }
-
-        .mehak-logic {
-            width: 10%;
-        }
-
-        .mehak-coding {
-            width: 18%;
-        }
-
-        .mehak-creativity {
-            width: 15%;
-        }
-
-        .simran-innovation {
-            width: 28%;
-        }
-
-        .simran-logic {
-            width: 15%;
-        }
-
-        .simran-coding {
-            width: 19%;
-        }
-
-        .simran-creativity {
-            width: 28%;
-        }
-
-        .harleen-innovation {
-            width: 25%;
-        }
-
-        .harleen-logic {
-            width: 30%;
-        }
-
-        .harleen-coding {
-            width: 40%;
-        }
-
-        .harleen-creativity {
-            width: 10%;
-        }
-
-        .cont1 {
-            display: flex;
-            justify-content: left;
-            padding: 0px 20px;
-        }
-
-        .cont1:nth-child(1) h1 {
-            animation-delay: 0.2s;
-        }
-
-        .cont1:nth-child(2) h1 {
-            animation-delay: 0.5s;
-        }
-
-        .cont1:nth-child(3) h1 {
-            animation-delay: 0.8s;
-        }
-
-        /* Staggered animation delays for each student */
-        .main-wrapper:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .main-wrapper:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .main-wrapper:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .main-wrapper:nth-child(4) {
-            animation-delay: 0.4s;
-        }
-
-        .main-wrapper:nth-child(5) {
-            animation-delay: 0.5s;
-        }
-
-        .main-wrapper:nth-child(6) {
-            animation-delay: 0.6s;
-        }
-
-        .main-wrapper:nth-child(7) {
-            animation-delay: 0.7s;
-        }
-
-        .main-wrapper:nth-child(8) {
-            animation-delay: 0.8s;
-        }
-
-        .main-wrapper:nth-child(9) {
-            animation-delay: 0.9s;
-        }
-
-        .main-wrapper:nth-child(10) {
-            animation-delay: 1.0s;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: fadeInUp 1s ease;
-        }
-
-
-        .header-card {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            padding: 25px 40px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            color: #f8fafc;
-            text-align: center;
-            max-width: 850px;
-            width: 100%;
-            transition: transform 0.3s ease;
-        }
-
-        .header-card2 {
-            background: linear-gradient(135deg, #1e293b, #334155);
-            padding: 25px 20px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            color: #f8fafc;
-            text-align: center;
-            max-width: 850px;
-            width: 100%;
-            transition: transform 0.3s ease;
-        }
-
-        .header-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .college-name {
-            color: white;
-            font-family: 'Orbitron', sans-serif;
-            font-size: 26px;
-            margin-bottom: 10px;
-            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-        }
-
-
-        .ranked {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 26px;
-            margin: 6px 0;
-            color: #cbd5e1;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #1e293b;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+h1:hover {
+    transform: translateY(-2px) scale(1.02);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.progress-section {
+    width: 90%;
+    margin: 30px auto;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.main-wrapper {
+    margin-bottom: 30px;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    animation: slideInLeft 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.main-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.progress-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.name-label {
+    width: 100px;
+    font-weight: bold;
+    text-align: left;
+    margin-right: -15px;
+    color: #1e293b;
+    font-size: 16px;
+}
+
+.progress-bar {
+    position: relative;
+    flex: 1;
+    height: 28px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    overflow: hidden;
+    margin-right: 10px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 14px 0 0 14px;
+    position: relative;
+    overflow: hidden;
+    animation: fillAnimation 2s ease-out forwards;
+    transform-origin: left;
+    width: 0%;
+}
+
+.score {
+    width: 60px;
+    font-weight: bold;
+    text-align: left;
+    color: #1e293b;
+    font-size: 14px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out 1.5s forwards;
+}
+
+.sub-container {
+    margin-left: 115px;
+}
+
+.sub-wrapper {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.sub-bar {
+    width: 60%;
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    overflow: hidden;
+    margin-right: 10px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.sub-fill {
+    height: 100%;
+    border-radius: 6px 0 0 6px;
+    position: relative;
+}
+
+.sub-label {
+    font-size: 13px;
+    min-width: 140px;
+    color: #475569;
+    font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fillAnimation {
+    from {
+        width: 0%;
+    }
+    to {
+        width: var(--target-width);
+    }
+}
+
+/* Header Animation Keyframes */
+@keyframes headerSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    50% {
+        opacity: 0.8;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes headerPulse {
+    0%, 100% {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+}
+
+@keyframes headerFloat {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes titleGlow {
+    0% {
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+    100% {
+        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+}
+
+@keyframes textShimmer {
+    0%, 100% {
+        color: #cbd5e1;
+    }
+    50% {
+        color: #e2e8f0;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Enhanced Gradient Color Scheme */
+.unified-progress {
+    background: linear-gradient(135deg, #1e293b, #475569, #64748b);
+    position: relative;
+}
+
+.unified-progress::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    border-radius: 14px;
+}
+
+/* Main progress widths with CSS variables for animation */
+.score-85 {
+    --target-width: 85%;
+}
+
+.score-70 {
+    --target-width: 70%;
+}
+
+.score-60 {
+    --target-width: 65%;
+}
+
+.score-45 {
+    --target-width: 63%;
+}
+
+.score-30 {
+    --target-width: 60%;
+}
+
+.score-25 {
+    --target-width: 55%;
+}
+
+.score-15 {
+    --target-width: 53%;
+}
+
+.score-10 {
+    --target-width: 50%;
+}
+
+.score-5 {
+    --target-width: 49%;
+}
+
+.score-2 {
+    --target-width: 45%;
+}
+
+/* Sub progress colors with enhanced gradients */
+.sub-unified {
+    background: linear-gradient(135deg, #64748b, #94a3b8);
+    border-radius: 6px;
+    position: relative;
+}
+
+.sub-unified::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    border-radius: 6px;
+}
+
+/* Sub-skill percentages with static widths */
+.vansh-innovation {
+    width: 90%;
+}
+
+.vansh-logic {
+    width: 85%;
+}
+
+.vansh-coding {
+    width: 89%;
+}
+
+.vansh-creativity {
+    width: 75%;
+}
+
+.radika-innovation {
+    width: 75%;
+}
+
+.radika-logic {
+    width: 70%;
+}
+
+.radika-coding {
+    width: 25%;
+}
+
+.radika-creativity {
+    width: 60%;
+}
+
+.sukhpreet-innovation {
+    width: 65%;
+}
+
+.sukhpreet-logic {
+    width: 77%;
+}
+
+.sukhpreet-coding {
+    width: 55%;
+}
+
+.sukhpreet-creativity {
+    width: 50%;
+}
+
+.jap-innovation {
+    width: 50%;
+}
+
+.jap-logic {
+    width: 45%;
+}
+
+.jap-coding {
+    width: 40%;
+}
+
+.jap-creativity {
+    width: 65%;
+}
+
+.eknoor-innovation {
+    width: 35%;
+}
+
+.eknoor-logic {
+    width: 13%;
+}
+
+.eknoor-coding {
+    width: 25%;
+}
+
+.eknoor-creativity {
+    width: 9%;
+}
+
+.arjun-innovation {
+    width: 30%;
+}
+
+.arjun-logic {
+    width: 20%;
+}
+
+.arjun-coding {
+    width: 30%;
+}
+
+.arjun-creativity {
+    width: 10%;
+}
+
+.rajveer-innovation {
+    width: 60%;
+}
+
+.rajveer-logic {
+    width: 16%;
+}
+
+.rajveer-coding {
+    width: 12%;
+}
+
+.rajveer-creativity {
+    width: 10%;
+}
+
+.mehak-innovation {
+    width: 15%;
+}
+
+.mehak-logic {
+    width: 10%;
+}
+
+.mehak-coding {
+    width: 18%;
+}
+
+.mehak-creativity {
+    width: 15%;
+}
+
+.simran-innovation {
+    width: 28%;
+}
+
+.simran-logic {
+    width: 15%;
+}
+
+.simran-coding {
+    width: 19%;
+}
+
+.simran-creativity {
+    width: 28%;
+}
+
+.harleen-innovation {
+    width: 25%;
+}
+
+.harleen-logic {
+    width: 30%;
+}
+
+.harleen-coding {
+    width: 40%;
+}
+
+.harleen-creativity {
+    width: 10%;
+}
+
+.cont1 {
+    display: flex;
+    justify-content: left;
+    padding: 0px 20px;
+}
+
+/* Staggered animation delays for each student */
+.main-wrapper:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.main-wrapper:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.main-wrapper:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.main-wrapper:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.main-wrapper:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.main-wrapper:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.main-wrapper:nth-child(7) {
+    animation-delay: 0.7s;
+}
+
+.main-wrapper:nth-child(8) {
+    animation-delay: 0.8s;
+}
+
+.main-wrapper:nth-child(9) {
+    animation-delay: 0.9s;
+}
+
+.main-wrapper:nth-child(10) {
+    animation-delay: 1.0s;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: headerSlideDown 1.2s ease-out;
+}
+
+.header-card {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    padding: 25px 40px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    color: #f8fafc;
+    text-align: center;
+    max-width: 850px;
+    width: 100%;
+    transition: all 0.4s ease;
+    animation: headerPulse 3s ease-in-out infinite;
+}
+
+.header-card2 {
+    background: linear-gradient(135deg, #1e293b, #334155);
+    padding: 25px 20px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    color: #f8fafc;
+    text-align: center;
+    max-width: 850px;
+    width: 100%;
+    transition: all 0.4s ease;
+    animation: headerFloat 4s ease-in-out infinite;
+}
+
+
+
+.college-name {
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.ranked {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 6px 0;
+    color: #cbd5e1;
+    animation: textShimmer 3s ease-in-out infinite;
+    letter-spacing: 0.5px;
+}
+   </style>
 </head>
 
 <body>
@@ -995,8 +960,3 @@
                 </div>
             </div>
         </div>
-
-    </div>
-</body>
-
-</html>
