@@ -7,30 +7,76 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Raleway:wght@400;700&family=Inter:wght@400;600&display=swap"
         rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Raleway:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
         }
 
         h1 {
-            text-align: center;
             margin-top: 20px;
             font-size: 24px;
+            color: #1e293b;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-30px) scale(0.9);
+            animation: titleAnimation 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: titleShimmer 2s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        h1:hover {
+            transform: translateY(-2px) scale(1.02);
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
         .progress-section {
             width: 90%;
             margin: 30px auto;
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .main-wrapper {
             margin-bottom: 30px;
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            animation: slideInLeft 0.6s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .main-wrapper:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
         }
 
         .progress-wrapper {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .name-label {
@@ -38,27 +84,50 @@
             font-weight: bold;
             text-align: left;
             margin-right: -15px;
+            color: #1e293b;
+            font-size: 16px;
         }
 
         .progress-bar {
             position: relative;
             flex: 1;
-            height: 24px;
-            border-radius: 12px;
-            background-color: #e0e0e0;
+            height: 28px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
             overflow: hidden;
             margin-right: 10px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .progress-fill {
             height: 100%;
-            border-radius: 12px 0 0 12px;
+            border-radius: 14px 0 0 14px;
+            position: relative;
+            overflow: hidden;
+            animation: fillAnimation 2s ease-out forwards;
+            transform-origin: left;
+            width: 0%;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
         }
 
         .score {
-            width: 50px;
+            width: 60px;
             font-weight: bold;
             text-align: left;
+            color: #1e293b;
+            font-size: 14px;
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out 1.5s forwards;
         }
 
         .sub-container {
@@ -68,82 +137,182 @@
         .sub-wrapper {
             display: flex;
             align-items: center;
-            margin: 4px 0;
+            margin: 8px 0;
         }
 
         .sub-bar {
             width: 60%;
-            height: 10px;
-            border-radius: 5px;
-            background-color: #e0e0e0;
+            height: 12px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
             overflow: hidden;
             margin-right: 10px;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .sub-fill {
             height: 100%;
-            border-radius: 5px 0 0 5px;
+            border-radius: 6px 0 0 6px;
+            position: relative;
+            /* Removed all animations and shimmer effects */
         }
 
         .sub-label {
-            font-size: 12px;
+            font-size: 13px;
             min-width: 140px;
+            color: #475569;
+            font-weight: 500;
         }
 
-        /* Slate Gray Color Scheme - Elegant & Sophisticated */
+        /* Animations - kept only for main elements, removed sub-bar animations */
+        @keyframes titleAnimation {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.9);
+            }
+
+            60% {
+                transform: translateY(5px) scale(1.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes titleShimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fillAnimation {
+            from {
+                width: 0%;
+            }
+
+            to {
+                width: var(--target-width);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Enhanced Gradient Color Scheme */
         .unified-progress {
-            background: linear-gradient(135deg, #1e293b, #64748b);
+            background: linear-gradient(135deg, #1e293b, #475569, #64748b);
+            position: relative;
+        }
+
+        .unified-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             border-radius: 14px;
         }
 
-        /* Main progress widths based on scores */
+        /* Main progress widths with CSS variables for animation */
         .score-85 {
-            width: 85%;
+            --target-width: 85%;
         }
 
         .score-70 {
-            width: 70%;
+            --target-width: 70%;
         }
 
         .score-60 {
-            width: 65%;
+            --target-width: 65%;
         }
 
         .score-45 {
-            width: 63%;
+            --target-width: 63%;
         }
 
         .score-30 {
-            width: 60%;
+            --target-width: 60%;
         }
 
         .score-25 {
-            width: 55%;
+            --target-width: 55%;
         }
 
         .score-15 {
-            width: 53%;
+            --target-width: 53%;
         }
 
         .score-10 {
-            width: 50%;
+            --target-width: 50%;
         }
 
         .score-5 {
-            width: 49%;
+            --target-width: 49%;
         }
 
         .score-2 {
-            width: 45%;
+            --target-width: 45%;
         }
 
-        /* Sub progress colors - Lighter slate for sub-categories */
+        /* Sub progress colors with enhanced gradients - removed animations */
         .sub-unified {
             background: linear-gradient(135deg, #64748b, #94a3b8);
-            border-radius: 12px;
+            border-radius: 6px;
+            position: relative;
         }
 
-        /* Vansh (8.5/10) - High performer */
+        .sub-unified::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            border-radius: 6px;
+        }
+
+        /* Sub-skill percentages with static widths - no animations */
         .vansh-innovation {
             width: 90%;
         }
@@ -160,7 +329,6 @@
             width: 75%;
         }
 
-        /* Radika (7/10) - Good performer */
         .radika-innovation {
             width: 75%;
         }
@@ -177,7 +345,6 @@
             width: 60%;
         }
 
-        /* Sukhpreet (6/10) - Above average */
         .sukhpreet-innovation {
             width: 65%;
         }
@@ -194,7 +361,6 @@
             width: 50%;
         }
 
-        /* Jap (4.5/10) - Below average */
         .jap-innovation {
             width: 50%;
         }
@@ -211,7 +377,6 @@
             width: 65%;
         }
 
-        /* Eknoor (3/10) - Low performer */
         .eknoor-innovation {
             width: 35%;
         }
@@ -228,7 +393,6 @@
             width: 9%;
         }
 
-        /* Arjun (2.5/10) - Very low performer */
         .arjun-innovation {
             width: 30%;
         }
@@ -245,7 +409,6 @@
             width: 10%;
         }
 
-        /* Rajveer (1.5/10) - Poor performer */
         .rajveer-innovation {
             width: 60%;
         }
@@ -262,7 +425,6 @@
             width: 10%;
         }
 
-        /* Mehak (1/10) - Very poor performer */
         .mehak-innovation {
             width: 15%;
         }
@@ -279,7 +441,6 @@
             width: 15%;
         }
 
-        /* Simran (0.5/10) - Extremely poor performer */
         .simran-innovation {
             width: 28%;
         }
@@ -296,7 +457,6 @@
             width: 28%;
         }
 
-        /* Harleen (0.2/10) - Minimal performer */
         .harleen-innovation {
             width: 25%;
         }
@@ -318,28 +478,152 @@
             justify-content: left;
             padding: 0px 20px;
         }
+
+        .cont1:nth-child(1) h1 {
+            animation-delay: 0.2s;
+        }
+
+        .cont1:nth-child(2) h1 {
+            animation-delay: 0.5s;
+        }
+
+        .cont1:nth-child(3) h1 {
+            animation-delay: 0.8s;
+        }
+
+        /* Staggered animation delays for each student */
+        .main-wrapper:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .main-wrapper:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .main-wrapper:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .main-wrapper:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .main-wrapper:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .main-wrapper:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .main-wrapper:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .main-wrapper:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .main-wrapper:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .main-wrapper:nth-child(10) {
+            animation-delay: 1.0s;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInUp 1s ease;
+        }
+
+
+        .header-card {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 25px 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            color: #f8fafc;
+            text-align: center;
+            max-width: 850px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .header-card2 {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 25px 20px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            color: #f8fafc;
+            text-align: center;
+            max-width: 850px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .header-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .college-name {
+            color: white;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            margin-bottom: 10px;
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+
+        .ranked {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            margin: 6px 0;
+            color: #cbd5e1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 
 <body>
-     <div class="cont1">
-        <!-- <h1 style="font-family: 'Raleway', sans-serif;">Skill:  Web Development</h1> -->
-        <h1 style="font-family: 'Raleway', sans-serif;">College: Multani Mal Modi College </h1>
-        <!-- <h1><br> Website Development</h1> -->
-    </div>
-    <div class="cont1">
-        <!-- <h1 style="font-family: 'Raleway', sans-serif;">Skill:  Web Development</h1> -->
-        <h1 style="font-family: 'Raleway', sans-serif;">Skill Category: Website Development </h1>
-        <!-- <h1><br> Website Development</h1> -->
-    </div>
-    
-    <div class="cont1">
-        <!-- <h1 style="font-family: 'Raleway', sans-serif;">Skill:  Web Development</h1> -->
-        <h1 style="font-family: 'Raleway', sans-serif;">Ranked By: HOD Of Computer Science Department of  Multani Mal Modi college </h1>
-        <!-- <h1><br> HOD Of Computer Science Department of  Multani Mal Modi college</h1> -->
-    </div><br>
-    <br>
+    <div class="header-container">
+        <div class="header-card">
+            <h1 class="college-name">🏫 Multani Mal Modi College</h1><br>
+            <!-- <p class="college-name">Ranked by: HOD Computer Science Department</p> -->
+            <!-- <p class="college-name"> Skill Category: Website Development</p> -->
+        </div>
 
+    </div><br>
+    <div class="header-container">
+        <div class="header-card2">
+            <!-- <h1 class="college-name">🏫 Multani Mal Modi College</h1><br> -->
+            <p class="ranked">Ranked by: HOD Computer Science Department</p>
+            <!-- <p class=""> Skill Category: Website Development</p> -->
+        </div>
+
+    </div><br>
+    <div class="header-container">
+        <div class="header-card2">
+            <!-- <h1 class="college-name">🏫 Multani Mal Modi College</h1><br> -->
+            <!-- <p class="ranked">Ranked by: HOD Computer Science Department</p><br> -->
+            <p class="ranked"> Skill Category: Website Development</p>
+        </div>
+
+    </div> <br>
     <div class="progress-section">
 
         <!-- 1. Vansh -->
@@ -453,7 +737,7 @@
             </div>
         </div>
 
-        <!-- 4. Jap -->
+        <!-- 4. Aditi -->
         <div class="main-wrapper">
             <div class="progress-wrapper">
                 <div class="name-label">Aditi</div>
