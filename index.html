@@ -2,1065 +2,1266 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Multani Mal Modi College</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Raleway:wght@400;700&family=Inter:wght@400;600&display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Raleway:wght@400;700&family=Inter:wght@400;600&display=swap"
-        rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone Reseller Store</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-    <style>
-        body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    min-height: 100vh;
-    margin: 0;
-    padding: 8px;
-}
-
-h1 {
-    margin-top: 20px;
-    font-size: 24px;
-    color: #1e293b;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    overflow: hidden;
-}
-
-h1:hover {
-    transform: translateY(-2px) scale(1.02);
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-}
-
-.progress-section {
-    width: 90%;
-    margin: 30px auto;
-    animation: fadeInUp 0.8s ease-out;
-}
-
-.main-wrapper {
-    margin-bottom: 30px;
-    background: white;
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    animation: slideInLeft 0.6s ease-out forwards;
-    opacity: 0;
-    transform: translateX(-50px);
-}
-
-.main-wrapper:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-}
-
-.progress-wrapper {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.name-label {
-    width: 100px;
-    font-weight: bold;
-    text-align: left;
-    margin-right: -15px;
-    color: #1e293b;
-    font-size: 16px;
-}
-
-.progress-bar {
-    position: relative;
-    flex: 1;
-    height: 28px;
-    border-radius: 14px;
-    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-    overflow: hidden;
-    margin-right: 10px;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.progress-fill {
-    height: 100%;
-    border-radius: 14px 0 0 14px;
-    position: relative;
-    overflow: hidden;
-    animation: fillAnimation 2s ease-out forwards;
-    transform-origin: left;
-    width: 0%;
-}
-
-.score {
-    width: 60px;
-    font-weight: bold;
-    text-align: left;
-    color: #1e293b;
-    font-size: 14px;
-    opacity: 0;
-    animation: fadeIn 0.5s ease-out 1.5s forwards;
-}
-
-.sub-container {
-    margin-left: 115px;
-}
-
-.sub-wrapper {
-    display: flex;
-    align-items: center;
-    margin: 8px 0;
-}
-
-.sub-bar {
-    width: 60%;
-    height: 12px;
-    border-radius: 6px;
-    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
-    overflow: hidden;
-    margin-right: 10px;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.sub-fill {
-    height: 100%;
-    border-radius: 6px 0 0 6px;
-    position: relative;
-}
-
-.sub-label {
-    font-size: 13px;
-    min-width: 140px;
-    color: #475569;
-    font-weight: 500;
-}
-
-/* Animations */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
+    html {
+      scroll-behavior: smooth;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInLeft {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fillAnimation {
-    from {
-        width: 0%;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #e8eaf6);
+      margin: 0;
+      padding: 0;
+      color: #333;
     }
 
-    to {
-        width: var(--target-width);
-    }
-}
-
-/* Header Animation Keyframes */
-@keyframes headerSlideDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px 60px 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
     }
 
-    50% {
-        opacity: 0.8;
-        transform: translateY(10px);
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(147, 51, 234, 0.1));
+      pointer-events: none;
     }
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes headerPulse {
-
-    0%,
-    100% {
-        box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    50% {
-        box-shadow: 0 15px 40px rgba(30, 41, 59, 0.25), 0 0 20px rgba(71, 85, 105, 0.2);
-    }
-}
-
-@keyframes headerFloat {
-
-    0%,
-    100% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-3px);
-    }
-}
-
-@keyframes titleGlow {
-    0% {
-        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    .header-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0;
+      background: linear-gradient(135deg, #ffffff, #e2e8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 
-    100% {
-        text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 0 15px rgba(226, 232, 240, 0.4);
-    }
-}
-
-@keyframes textShimmer {
-
-    0%,
-    100% {
-        color: #e2e8f0;
+    .header-subtitle {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-top: 12px;
+      opacity: 0.9;
+      color: #cbd5e1;
+      letter-spacing: 0.5px;
     }
 
-    50% {
-        color: #f1f5f9;
-        text-shadow: 0 0 10px rgba(226, 232, 240, 0.2);
-    }
-}
-
-/* Enhanced Gradient Color Scheme */
-.unified-progress {
-    background: linear-gradient(135deg, #1e293b, #475569, #64748b);
-    position: relative;
-}
-
-.unified-progress::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    border-radius: 14px;
-}
-
-/* Main progress widths with CSS variables for animation */
-.score-85 {
-    --target-width: 85%;
-}
-
-.score-70 {
-    --target-width: 70%;
-}
-
-.score-60 {
-    --target-width: 65%;
-}
-
-.score-45 {
-    --target-width: 63%;
-}
-
-.score-30 {
-    --target-width: 60%;
-}
-
-.score-25 {
-    --target-width: 55%;
-}
-
-.score-15 {
-    --target-width: 53%;
-}
-
-.score-10 {
-    --target-width: 50%;
-}
-
-.score-5 {
-    --target-width: 49%;
-}
-
-.score-2 {
-    --target-width: 45%;
-}
-
-/* Sub progress colors with enhanced gradients */
-.sub-unified {
-    background: linear-gradient(135deg, #64748b, #94a3b8);
-    border-radius: 6px;
-    position: relative;
-}
-
-.sub-unified::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    border-radius: 6px;
-}
-
-/* Sub-skill percentages with static widths */
-.vansh-innovation {
-    width: 90%;
-}
-
-.vansh-logic {
-    width: 85%;
-}
-
-.vansh-coding {
-    width: 89%;
-}
-
-.vansh-creativity {
-    width: 75%;
-}
-
-.radika-innovation {
-    width: 75%;
-}
-
-.radika-logic {
-    width: 70%;
-}
-
-.radika-coding {
-    width: 25%;
-}
-
-.radika-creativity {
-    width: 60%;
-}
-
-.sukhpreet-innovation {
-    width: 65%;
-}
-
-.sukhpreet-logic {
-    width: 77%;
-}
-
-.sukhpreet-coding {
-    width: 55%;
-}
-
-.sukhpreet-creativity {
-    width: 50%;
-}
-
-.jap-innovation {
-    width: 50%;
-}
-
-.jap-logic {
-    width: 45%;
-}
-
-.jap-coding {
-    width: 40%;
-}
-
-.jap-creativity {
-    width: 65%;
-}
-
-.eknoor-innovation {
-    width: 35%;
-}
-
-.eknoor-logic {
-    width: 13%;
-}
-
-.eknoor-coding {
-    width: 25%;
-}
-
-.eknoor-creativity {
-    width: 9%;
-}
-
-.arjun-innovation {
-    width: 30%;
-}
-
-.arjun-logic {
-    width: 20%;
-}
-
-.arjun-coding {
-    width: 30%;
-}
-
-.arjun-creativity {
-    width: 10%;
-}
-
-.rajveer-innovation {
-    width: 60%;
-}
-
-.rajveer-logic {
-    width: 16%;
-}
-
-.rajveer-coding {
-    width: 12%;
-}
-
-.rajveer-creativity {
-    width: 10%;
-}
-
-.mehak-innovation {
-    width: 15%;
-}
-
-.mehak-logic {
-    width: 10%;
-}
-
-.mehak-coding {
-    width: 18%;
-}
-
-.mehak-creativity {
-    width: 15%;
-}
-
-.simran-innovation {
-    width: 28%;
-}
-
-.simran-logic {
-    width: 15%;
-}
-
-.simran-coding {
-    width: 19%;
-}
-
-.simran-creativity {
-    width: 28%;
-}
-
-.harleen-innovation {
-    width: 25%;
-}
-
-.harleen-logic {
-    width: 30%;
-}
-
-.harleen-coding {
-    width: 40%;
-}
-
-.harleen-creativity {
-    width: 10%;
-}
-
-.cont1 {
-    display: flex;
-    justify-content: left;
-    padding: 0px 20px;
-}
-
-/* Staggered animation delays for each student */
-.main-wrapper:nth-child(1) {
-    animation-delay: 0.1s;
-}
-
-.main-wrapper:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.main-wrapper:nth-child(3) {
-    animation-delay: 0.3s;
-}
-
-.main-wrapper:nth-child(4) {
-    animation-delay: 0.4s;
-}
-
-.main-wrapper:nth-child(5) {
-    animation-delay: 0.5s;
-}
-
-.main-wrapper:nth-child(6) {
-    animation-delay: 0.6s;
-}
-
-.main-wrapper:nth-child(7) {
-    animation-delay: 0.7s;
-}
-
-.main-wrapper:nth-child(8) {
-    animation-delay: 0.8s;
-}
-
-.main-wrapper:nth-child(9) {
-    animation-delay: 0.9s;
-}
-
-.main-wrapper:nth-child(10) {
-    animation-delay: 1.0s;
-}
-
-.header-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: headerSlideDown 1.2s ease-out;
-}
-
-/* Dark Header Styles - Matching the progress bar colors */
-.header-card {
-    background: linear-gradient(135deg, #1e293b, #475569, #64748b);
-    padding: 25px 40px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
-    color: #f8fafc;
-    text-align: center;
-    max-width: 850px;
-    width: 100%;
-    transition: all 0.4s ease;
-    animation: headerPulse 3s ease-in-out infinite;
-    position: relative;
-    overflow: hidden;
-}
-
-.header-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    border-radius: 18px;
-    pointer-events: none;
-}
-
-.header-card2 {
-    background: linear-gradient(135deg, #1e293b, #334155, #475569);
-    padding: 25px 20px;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(30, 41, 59, 0.15);
-    color: #f8fafc;
-    text-align: center;
-    max-width: 850px;
-    width: 100%;
-    transition: all 0.4s ease;
-    animation: headerFloat 4s ease-in-out infinite;
-    position: relative;
-    overflow: hidden;
-}
-
-.header-card2::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    border-radius: 18px;
-    pointer-events: none;
-}
-
-.college-name {
-    color: #f8fafc;
-    font-family: 'Orbitron', sans-serif;
-    font-size: 26px;
-    margin-bottom: 10px;
-    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-    animation: titleGlow 2s ease-in-out infinite alternate;
-    position: relative;
-    z-index: 1;
-}
-
-.ranked {
-    font-family: 'Inter', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 6px 0;
-    color: #e2e8f0;
-    animation: textShimmer 3s ease-in-out infinite;
-    letter-spacing: 0.5px;
-    position: relative;
-    z-index: 1;
-}
-
-/* Modern Dark Header Styles */
-.header-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
-    animation: headerSlideDown 1.2s ease-out;
-}
-
-.main-header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #334155 60%, #475569 100%);
-    padding: 35px 45px;
-    border-radius: 24px;
-    box-shadow:
-        0 25px 60px rgba(15, 23, 42, 0.3),
-        0 0 0 1px rgba(148, 163, 184, 0.1),
-        inset 0 1px 0 rgba(148, 163, 184, 0.15);
-    color: #f8fafc;
-    text-align: center;
-    max-width: 900px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    border: 1px solid rgba(100, 116, 139, 0.2);
-}
-
-.main-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.08), transparent);
-    animation: shimmer 4s infinite;
-}
-
-.main-header::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(100, 116, 139, 0.05) 0%, transparent 70%);
-    border-radius: 24px;
-    pointer-events: none;
-}
-
-.main-header:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow:
-        0 35px 80px rgba(15, 23, 42, 0.4),
-        0 0 0 1px rgba(148, 163, 184, 0.2),
-        inset 0 1px 0 rgba(148, 163, 184, 0.25);
-}
-
-.college-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    margin: 0 0 20px 0;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    letter-spacing: 1.5px;
-    animation: titlePulse 3s ease-in-out infinite alternate;
-    color: #f8fafc;
-    position: relative;
-    z-index: 2;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.college-subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: #cbd5e1;
-    margin-bottom: 30px;
-    opacity: 0.9;
-    position: relative;
-    z-index: 2;
-}
-
-.header-info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    margin-top: 25px;
-    position: relative;
-    z-index: 2;
-}
-
-.info-card {
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(148, 163, 184, 0.15);
-    border-radius: 18px;
-    padding: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.info-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(100, 116, 139, 0.1), transparent);
-    border-radius: 18px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.info-card:hover {
-    background: rgba(15, 23, 42, 0.6);
-    transform: translateY(-3px);
-    border-color: rgba(148, 163, 184, 0.25);
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.3);
-}
-
-.info-card:hover::before {
-    opacity: 1;
-}
-
-.info-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    color: #94a3b8;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    position: relative;
-    z-index: 1;
-}
-
-.info-value {
-    font-family: 'Raleway', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #f8fafc;
-    position: relative;
-    z-index: 1;
-}
-
-.department-badge {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(100, 116, 139, 0.2);
-    color: #cbd5e1;
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: 600;
-    border: 1px solid rgba(100, 116, 139, 0.3);
-    margin-top: 10px;
-}
-
-.skill-badge {
-    display: inline-flex;
-    align-items: center;
-    background: rgba(148, 163, 184, 0.2);
-    color: #e2e8f0;
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: 600;
-    border: 1px solid rgba(148, 163, 184, 0.3);
-    margin-top: 10px;
-}
-
-.header-icon {
-    font-size: 28px;
-    margin-right: 12px;
-    display: inline-block;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-    color: #f8fafc !important;
-    -webkit-text-fill-color: #f8fafc !important;
-}
-
-@keyframes shimmer {
-    0% {
-        left: -100%;
+    .header-decoration {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(147, 51, 234, 0.2));
+      filter: blur(40px);
     }
 
-    100% {
-        left: 100%;
-    }
-}
-
-@keyframes titlePulse {
-    0% {
-        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    .decoration-1 {
+      top: -50px;
+      left: 10%;
+      animation: float 6s ease-in-out infinite;
     }
 
-    100% {
-        text-shadow: 0 6px 16px rgba(0, 0, 0, 0.5), 0 0 25px rgba(226, 232, 240, 0.15);
-    }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .main-header {
-        padding: 25px 20px;
-        margin: 0 10px;
+    .decoration-2 {
+      bottom: -50px;
+      right: 10%;
+      animation: float 8s ease-in-out infinite reverse;
     }
 
-    .college-title {
-        font-size: 28px;
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(180deg);
+      }
     }
 
-    .header-info-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .model-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      background: #e0f7fa;
+      padding: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #b2ebf2;
     }
 
-    .info-card {
-        padding: 15px;
+    .model-box {
+      background: linear-gradient(135deg, #fff 60%, #b2ebf2 100%);
+      border: 2px solid #039be5;
+      color: #004d6b;
+      border-radius: 12px;
+      padding: 8px 20px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      display: block;
     }
-}
 
-.progress-section {
-    width: 90%;
-    margin: 30px auto;
-    animation: fadeInUp 0.8s ease-out;
-    filter: blur(4px);
-    position: relative;
-}
+    .model-box:hover,
+    .model-box:focus {
+      background: linear-gradient(135deg, #e0f7fa 70%, #fff 100%);
+      transform: translateY(-2px) scale(1.05);
+      color: #0288d1;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.13);
+    }
 
-.progress-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
-    pointer-events: none;
-}
-    </style>
+    @media (max-width: 700px) {
+      .model-box {
+        font-size: 1rem;
+        padding: 6px 12px;
+      }
 
+      .model-nav {
+        padding: 12px;
+      }
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 34px;
+      padding: 40px;
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(224, 247, 250, 0.93) 60%, rgba(232, 234, 246, 0.98) 100%);
+      border-radius: 24px;
+      box-shadow: 0 10px 36px rgba(56, 111, 156, 0.18), 0 1.5px 2px rgba(147, 51, 234, 0.07);
+      backdrop-filter: blur(6px);
+      border: 1.5px solid rgba(93, 156, 236, 0.12);
+      overflow: hidden;
+      transition: transform 0.32s cubic-bezier(.21, .81, .77, .97), box-shadow 0.32s;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 48px rgba(56, 111, 156, 0.23), 0 1.5px 2px rgba(147, 51, 234, 0.08);
+      border-color: #1976d2;
+    }
+
+    .card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #e3f2fd, #ede7f6);
+      border-bottom: 1px solid #e3e9ef;
+      transition: transform 0.35s;
+      display: block;
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    .card:hover img {
+      transform: scale(1.07);
+    }
+
+    .card-content {
+      padding: 20px 24px 18px 24px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 2rem;
+      color: #26336c;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #3b82f6 30%, #9748ea 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .details {
+      margin-top: 12px;
+      font-size: 1.07rem;
+      color: #53687e;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      background: rgba(255, 255, 255, 0.82);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 8px rgba(59, 130, 246, 0.07);
+    }
+
+    th,
+    td {
+      border: 1px solid #dae3eb;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #e3f2fd;
+      font-weight: 700;
+      color: #2e528a;
+      letter-spacing: 0.08em;
+      font-size: 1.06rem;
+    }
+
+    tr:hover {
+      background-color: #e0f7fa;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        padding: 25px;
+        gap: 18px;
+      }
+
+      .card-content {
+        padding: 14px;
+      }
+
+      .card img {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 8px;
+      }
+
+      .card-content {
+        padding: 8px;
+      }
+
+      .card img {
+        height: 140px;
+      }
+
+      table {
+        font-size: 0.92rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <div class="header-container">
-        <div class="main-header">
-            <h1 class="college-title">
-                <span class="header-icon">🏫</span>
-                Multani Mal Modi College
-            </h1>
-            <!-- <p class="college-subtitle">Student Performance Ranking Dashboard</p> -->
-
-            <div class="header-info-grid">
-                <div class="info-card">
-                    <div class="info-label">Ranked By</div>
-                    <div class="info-value">HOD Computer Science Department</div> <br>
-                </div>
-                <div class="info-card">
-                    <div class="info-label">Skill </div>
-                    <div class="info-value">Website Development</div>
-                </div>
-            </div>
-        </div>
+  <header>
+    <div class="header-decoration decoration-1"></div>
+    <div class="header-decoration decoration-2"></div>
+    <div class="header-content">
+      <h1 class="header-title">Hi-Tech Computer & Mobile</h1>
+      <p class="header-subtitle">SPECIAL DEALS IN APPLE MOBILES</p>
     </div>
-
-    <div class="progress-section">
-
-        <!-- 1. Vansh -->
-        <div class="main-wrapper">
-            <div class="progress-wrapper">
-                <div class="name-label">Arsh</div>
-                <div class="progress-bar">
-                    <div class="progress-fill unified-progress score-85"></div>
-                </div>
-                <div class="score">8.5/10</div>
-            </div>
-            <div class="sub-container">
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified vansh-innovation"></div>
-                    </div>
-                    <div class="sub-label">Innovation</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified vansh-logic"></div>
-                    </div>
-                    <div class="sub-label">Logic Building</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified vansh-coding"></div>
-                    </div>
-                    <div class="sub-label">Coding Skill</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified vansh-creativity"></div>
-                    </div>
-                    <div class="sub-label">Technical Creativity</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. Radika -->
-        <div class="main-wrapper">
-            <div class="progress-wrapper">
-                <div class="name-label">Jaskaran</div>
-                <div class="progress-bar">
-                    <div class="progress-fill unified-progress score-70"></div>
-                </div>
-                <div class="score">7/10</div>
-            </div>
-            <div class="sub-container">
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified radika-innovation"></div>
-                    </div>
-                    <div class="sub-label">Innovation</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified radika-logic"></div>
-                    </div>
-                    <div class="sub-label">Logic Building</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified radika-coding"></div>
-                    </div>
-                    <div class="sub-label">Coding Skill</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified radika-creativity"></div>
-                    </div>
-                    <div class="sub-label">Technical Creativity</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. Sukhpreet -->
-        <div class="main-wrapper">
-            <div class="progress-wrapper">
-                <div class="name-label">Diljaan</div>
-                <div class="progress-bar">
-                    <div class="progress-fill unified-progress score-60"></div>
-                </div>
-                <div class="score">6.5/10</div>
-            </div>
-            <div class="sub-container">
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-innovation"></div>
-                    </div>
-                    <div class="sub-label">Innovation</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-logic"></div>
-                    </div>
-                    <div class="sub-label">Logic Building</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-coding"></div>
-                    </div>
-                    <div class="sub-label">Coding Skill</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-creativity"></div>
-                    </div>
-                    <div class="sub-label">Technical Creativity</div>
-                </div>
-            </div>
-        </div>
-        <div class="main-wrapper">
-            <div class="progress-wrapper">
-                <div class="name-label">Ekam</div>
-                <div class="progress-bar">
-                    <div class="progress-fill unified-progress score-60"></div>
-                </div>
-                <div class="score">6.5/10</div>
-            </div>
-            <div class="sub-container">
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-innovation"></div>
-                    </div>
-                    <div class="sub-label">Innovation</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-logic"></div>
-                    </div>
-                    <div class="sub-label">Logic Building</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-coding"></div>
-                    </div>
-                    <div class="sub-label">Coding Skill</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-creativity"></div>
-                    </div>
-                    <div class="sub-label">Technical Creativity</div>
-                </div>
-            </div>
-        </div>
-        <div class="main-wrapper">
-            <div class="progress-wrapper">
-                <div class="name-label">kiratbir</div>
-                <div class="progress-bar">
-                    <div class="progress-fill unified-progress score-60"></div>
-                </div>
-                <div class="score">6.5/10</div>
-            </div>
-            <div class="sub-container">
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-innovation"></div>
-                    </div>
-                    <div class="sub-label">Innovation</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-logic"></div>
-                    </div>
-                    <div class="sub-label">Logic Building</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-coding"></div>
-                    </div>
-                    <div class="sub-label">Coding Skill</div>
-                </div>
-                <div class="sub-wrapper">
-                    <div class="sub-bar">
-                        <div class="sub-fill sub-unified sukhpreet-creativity"></div>
-                    </div>
-                    <div class="sub-label">Technical Creativity</div>
-                </div>
-            </div>
-        </div>
+  </header>
+  <nav class="model-nav">
+    <a class="model-box" href="#iphone11">iPhone 11</a>
+    <a class="model-box" href="#iphone12">iPhone 12</a>
+    <a class="model-box" href="#iphone13">iPhone 13</a>
+    <a class="model-box" href="#iphone14">iPhone 14</a>
+    <a class="model-box" href="#iphone15">iPhone 15</a>
+    <a class="model-box" href="#iphone16">iPhone 16</a>
+    <a class="model-box" href="#iphone17">iPhone 17</a>
+  </nav>
+  <div class="container">
+    <div class="card" id="iphone11">
+      <div class="card-content">
+        <h2>iPhone 11</h2>
+        <table>
+          <tr>
+            <th>Storage</th>
+            <th>Battery Health</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>90%</td>
+            <td>₹28,000</td>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>95%</td>
+            <td>₹30,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>90%</td>
+            <td>₹32,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>95%</td>
+            <td>₹34,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>97%</td>
+            <td>₹38,000</td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <h1 style="margin-left :10rem ;">Ranking Will Be Updated Next Week,On 30June 2025</h1>
+    <div class="card" id="iphone11">
+      <div class="card-content">
+        <h2>iPhone 11 Pro</h2>
+        <table>
+          <tr>
+            <th>Storage</th>
+            <th>Battery Health</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>90%</td>
+            <td>₹28,000</td>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>95%</td>
+            <td>₹30,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>90%</td>
+            <td>₹32,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>95%</td>
+            <td>₹34,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>97%</td>
+            <td>₹38,000</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card" id="iphone11">
+      <div class="card-content">
+        <h2>iPhone 11 Pro Max</h2>
+        <table>
+          <tr>
+            <th>Storage</th>
+            <th>Battery Health</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>90%</td>
+            <td>₹28,000</td>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>95%</td>
+            <td>₹30,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>90%</td>
+            <td>₹32,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>95%</td>
+            <td>₹34,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>97%</td>
+            <td>₹38,000</td>
+          </tr>
+        </table>
+      </div>
+    </div><br>
+    <div class="card" id="iphone12">
+      <div class="card-content">
+        <h2>iPhone 12</h2>
+        <table>
+          <tr>
+            <th>Storage</th>
+            <th>Battery Health</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>88%</td>
+            <td>₹36,000</td>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>92%</td>
+            <td>₹38,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>90%</td>
+            <td>₹40,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>95%</td>
+            <td>₹42,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>94%</td>
+            <td>₹46,000</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card" id="iphone11">
+      <div class="card-content">
+        <h2>iPhone 12 Mini</h2>
+        <table>
+          <tr>
+            <th>Storage</th>
+            <th>Battery Health</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>90%</td>
+            <td>₹28,000</td>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>95%</td>
+            <td>₹30,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>90%</td>
+            <td>₹32,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>95%</td>
+            <td>₹34,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>97%</td>
+            <td>₹38,000</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card" id="iphone11">
+      <div class="card-content">
+        <h2>iPhone 12 Pro</h2>
+        <table>
+          <tr>
+            <th>Storage</th>
+            <th>Battery Health</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>90%</td>
+            <td>₹28,000</td>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>95%</td>
+            <td>₹30,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>90%</td>
+            <td>₹32,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>95%</td>
+            <td>₹34,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>97%</td>
+            <td>₹38,000</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card" id="iphone11">
+      <div class="card-content">
+        <h2>iPhone 12 Pro Max</h2>
+        <table>
+          <tr>
+            <th>Storage</th>
+            <th>Battery Health</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>90%</td>
+            <td>₹28,000</td>
+          </tr>
+          <tr>
+            <td>64GB</td>
+            <td>95%</td>
+            <td>₹30,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>90%</td>
+            <td>₹32,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>95%</td>
+            <td>₹34,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>97%</td>
+            <td>₹38,000</td>
+          </tr>
+        </table>
+      </div>
+    </div><br>
+    <div class="card" id="iphone13">
+      <div class="card-content">
+        <h2>iPhone 13</h2>
+        <table>
+          <tr>
+            <th>Storage</th>
+            <th>Battery Health</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>88%</td>
+            <td>₹44,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>92%</td>
+            <td>₹46,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>90%</td>
+            <td>₹50,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>95%</td>
+            <td>₹52,000</td>
+          </tr>
+          <tr>
+            <td>512GB</td>
+            <td>96%</td>
+            <td>₹58,000</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="card" id="">
+      <div class="card-content">
+        <h2>iPhone 13 Mini</h2>
+        <table>
+          <tr>
+            <th>Storage</th>
+            <th>Battery Health</th>
+            <th>Price</th>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>88%</td>
+            <td>₹44,000</td>
+          </tr>
+          <tr>
+            <td>128GB</td>
+            <td>92%</td>
+            <td>₹46,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>90%</td>
+            <td>₹50,000</td>
+          </tr>
+          <tr>
+            <td>256GB</td>
+            <td>95%</td>
+            <td>₹52,000</td>
+          </tr>
+          <tr>
+            <td>512GB</td>
+            <td>96%</td>
+            <td>₹58,000</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 13 Pro</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 13 Pro Max</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div><br>
+  <div class="card" id="iphone14">
+    <div class="card-content">
+      <h2>iPhone 14</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>88%</td>
+          <td>₹54,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>92%</td>
+          <td>₹56,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>90%</td>
+          <td>₹60,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>95%</td>
+          <td>₹62,000</td>
+        </tr>
+        <tr>
+          <td>512GB</td>
+          <td>94%</td>
+          <td>₹68,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="iphone14">
+    <div class="card-content">
+      <h2>iPhone 14 Plus</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>88%</td>
+          <td>₹54,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>92%</td>
+          <td>₹56,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>90%</td>
+          <td>₹60,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>95%</td>
+          <td>₹62,000</td>
+        </tr>
+        <tr>
+          <td>512GB</td>
+          <td>94%</td>
+          <td>₹68,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 14 Pro</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 14 Pro Max</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div><br>
+  <div class="card" id="iphone15">
+    <div class="card-content">
+      <h2>iPhone 15</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹64,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹66,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>92%</td>
+          <td>₹70,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>96%</td>
+          <td>₹72,000</td>
+        </tr>
+        <tr>
+          <td>512GB</td>
+          <td>95%</td>
+          <td>₹78,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 15 Plus</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 15 Pro</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 15 Pro Max</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div><br>
+  <div class="card" id="iphone16">
+    <div class="card-content">
+      <h2>iPhone 16</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹74,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>98%</td>
+          <td>₹76,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>96%</td>
+          <td>₹80,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>99%</td>
+          <td>₹82,000</td>
+        </tr>
+        <tr>
+          <td>512GB</td>
+          <td>97%</td>
+          <td>₹88,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 16 Plus</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹74,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>98%</td>
+          <td>₹76,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>96%</td>
+          <td>₹80,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>99%</td>
+          <td>₹82,000</td>
+        </tr>
+        <tr>
+          <td>512GB</td>
+          <td>97%</td>
+          <td>₹88,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 16 Pro</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 16 Pro Max</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div><br>
+  <div class="card" id="iphone17">
+    <div class="card-content">
+      <h2>iPhone 17</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>98%</td>
+          <td>₹92,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>100%</td>
+          <td>₹94,000</td>
+        </tr>
+        <tr>
+          <td>512GB</td>
+          <td>99%</td>
+          <td>₹98,000</td>
+        </tr>
+        <tr>
+          <td>512GB</td>
+          <td>100%</td>
+          <td>₹1,00,000</td>
+        </tr>
+        <tr>
+          <td>1TB</td>
+          <td>100%</td>
+          <td>₹1,08,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 17 Pro</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="card" id="">
+    <div class="card-content">
+      <h2>iPhone 17 Pro Max</h2>
+      <table>
+        <tr>
+          <th>Storage</th>
+          <th>Battery Health</th>
+          <th>Price</th>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>90%</td>
+          <td>₹28,000</td>
+        </tr>
+        <tr>
+          <td>64GB</td>
+          <td>95%</td>
+          <td>₹30,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>90%</td>
+          <td>₹32,000</td>
+        </tr>
+        <tr>
+          <td>128GB</td>
+          <td>95%</td>
+          <td>₹34,000</td>
+        </tr>
+        <tr>
+          <td>256GB</td>
+          <td>97%</td>
+          <td>₹38,000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  </div>
+</body>
+
+</html>
