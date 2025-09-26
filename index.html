@@ -66,17 +66,87 @@
             transform: translateY(-8px);
         }
 
-        /* Camera flash effect */
-        .flash {
+        /* Dynamic Island Styles */
+        .dynamic-island {
             position: absolute;
             top: clamp(8px, 2vw, 12px);
-            right: clamp(8px, 2vw, 12px);
-            width: clamp(8px, 2vw, 10px);
-            height: clamp(8px, 2vw, 10px);
-            background: radial-gradient(circle, #fff 0%, #e5e5e5 100%);
-            border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #000;
+            border-radius: clamp(16px, 4vw, 20px);
+            width: clamp(32px, 8vw, 40px);
+            height: clamp(16px, 4vw, 20px);
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             z-index: 10;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        /* Single fixed size - no resizing */
+
+        /* Island content container */
+        .island-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(2px, 0.5vw, 4px) clamp(4px, 1vw, 8px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Compact content (camera dot) */
+        .compact-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(2px, 0.5vw, 3px);
+            opacity: 1;
+        }
+
+        .camera-dot {
+            width: clamp(4px, 1vw, 6px);
+            height: clamp(4px, 1vw, 6px);
+            background: #00ff00;
+            border-radius: 50%;
+            box-shadow: 0 0 clamp(2px, 0.5vw, 4px) rgba(0, 255, 0, 0.6);
+            animation: pulseSmooth 3s ease-in-out infinite;
+        }
+
+        .mic-dot {
+            width: clamp(3px, 0.8vw, 4px);
+            height: clamp(3px, 0.8vw, 4px);
+            background: #ff6b35;
+            border-radius: 50%;
+            box-shadow: 0 0 clamp(2px, 0.5vw, 3px) rgba(255, 107, 53, 0.6);
+            animation: pulseSmooth 3s ease-in-out infinite 1.5s;
+        }
+
+        /* Expanded content - hidden */
+        .expanded-content {
+            display: none;
+        }
+
+        /* Live Activity content - hidden */
+        .live-content {
+            display: none;
+        }
+
+        /* Animation states - no state changes needed */
+
+        /* Smooth pulse animation */
+        @keyframes pulseSmooth {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
         }
 
         /* Side button */
@@ -118,96 +188,28 @@
         }
 
         /* Different colors for Apple logos */
-        .apple-logo:nth-child(1) svg {
-            fill: #ff6b6b;
-        }
-
-        .apple-logo:nth-child(2) svg {
-            fill: #4ecdc4;
-        }
-
-        .apple-logo:nth-child(3) svg {
-            fill: #45b7d1;
-        }
-
-        .apple-logo:nth-child(4) svg {
-            fill: #f9ca24;
-        }
-
-        .apple-logo:nth-child(5) svg {
-            fill: #6c5ce7;
-        }
-
-        .apple-logo:nth-child(6) svg {
-            fill: #a29bfe;
-        }
-
-        .apple-logo:nth-child(7) svg {
-            fill: #fd79a8;
-        }
-
-        .apple-logo:nth-child(8) svg {
-            fill: #00b894;
-        }
-
-        .apple-logo:nth-child(9) svg {
-            fill: #e17055;
-        }
-
-        .apple-logo:nth-child(10) svg {
-            fill: #fdcb6e;
-        }
+        .apple-logo:nth-child(1) svg { fill: #ff6b6b; }
+        .apple-logo:nth-child(2) svg { fill: #4ecdc4; }
+        .apple-logo:nth-child(3) svg { fill: #45b7d1; }
+        .apple-logo:nth-child(4) svg { fill: #f9ca24; }
+        .apple-logo:nth-child(5) svg { fill: #6c5ce7; }
+        .apple-logo:nth-child(6) svg { fill: #a29bfe; }
+        .apple-logo:nth-child(7) svg { fill: #fd79a8; }
+        .apple-logo:nth-child(8) svg { fill: #00b894; }
+        .apple-logo:nth-child(9) svg { fill: #e17055; }
+        .apple-logo:nth-child(10) svg { fill: #fdcb6e; }
 
         /* Animation delays for staggered effect */
-        .apple-logo:nth-child(1) {
-            animation-delay: 0s;
-            top: 20%;
-        }
-
-        .apple-logo:nth-child(2) {
-            animation-delay: -1s;
-            top: 60%;
-        }
-
-        .apple-logo:nth-child(3) {
-            animation-delay: -2s;
-            top: 10%;
-        }
-
-        .apple-logo:nth-child(4) {
-            animation-delay: -3s;
-            top: 70%;
-        }
-
-        .apple-logo:nth-child(5) {
-            animation-delay: -4s;
-            top: 40%;
-        }
-
-        .apple-logo:nth-child(6) {
-            animation-delay: -5s;
-            top: 80%;
-        }
-
-        .apple-logo:nth-child(7) {
-            animation-delay: -6s;
-            top: 30%;
-        }
-
-        .apple-logo:nth-child(8) {
-            animation-delay: -7s;
-            top: 50%;
-        }
-
-        .apple-logo:nth-child(9) {
-            animation-delay: -1.5s;
-            top: 15%;
-        }
-
-        .apple-logo:nth-child(10) {
-            animation-delay: -2.5s;
-            top: 65%;
-        }
+        .apple-logo:nth-child(1) { animation-delay: 0s; top: 20%; }
+        .apple-logo:nth-child(2) { animation-delay: -1s; top: 60%; }
+        .apple-logo:nth-child(3) { animation-delay: -2s; top: 10%; }
+        .apple-logo:nth-child(4) { animation-delay: -3s; top: 70%; }
+        .apple-logo:nth-child(5) { animation-delay: -4s; top: 40%; }
+        .apple-logo:nth-child(6) { animation-delay: -5s; top: 80%; }
+        .apple-logo:nth-child(7) { animation-delay: -6s; top: 30%; }
+        .apple-logo:nth-child(8) { animation-delay: -7s; top: 50%; }
+        .apple-logo:nth-child(9) { animation-delay: -1.5s; top: 15%; }
+        .apple-logo:nth-child(10) { animation-delay: -2.5s; top: 65%; }
 
         @keyframes floatApple {
             0% {
@@ -215,19 +217,9 @@
                 transform: translateY(0) rotate(0deg);
                 opacity: 0;
             }
-
-            10% {
-                opacity: 0.6;
-            }
-
-            50% {
-                transform: translateY(-5px) rotate(180deg);
-            }
-
-            90% {
-                opacity: 0.6;
-            }
-
+            10% { opacity: 0.6; }
+            50% { transform: translateY(-5px) rotate(180deg); }
+            90% { opacity: 0.6; }
             100% {
                 left: calc(100% + 30px);
                 transform: translateY(0) rotate(360deg);
@@ -251,6 +243,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            margin-top: clamp(20px, 5vw, 32px); /* Add space for dynamic island */
         }
 
         .company-name {
@@ -335,10 +328,8 @@
             flex: 2;
             display: flex;
             flex-direction: column;
-            /* justify-content: flex-end; */
             gap: clamp(6px, 1.5vw, 8px);
             padding-bottom: clamp(25px, 6vw, 35px);
-            /* Add space for floating apples */
         }
 
         .contact-item {
@@ -520,55 +511,6 @@
             }
         }
 
-        /* Very small screens */
-        @media (max-width: 320px) {
-            body {
-                padding: 0.5rem;
-            }
-
-            .card-content {
-                padding: clamp(16px, 4vw, 20px);
-            }
-
-            .contact-item,
-            .qr-item {
-                gap: clamp(6px, 2vw, 8px);
-            }
-        }
-
-        /* Landscape orientation adjustments */
-        @media (max-height: 500px) and (orientation: landscape) {
-            body {
-                padding: 0.5rem;
-            }
-
-            .card-container {
-                max-width: min(70vw, 400px);
-                max-height: 80vh;
-            }
-        }
-
-        /* High DPI displays */
-        @media (-webkit-min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi) {
-            .business-card {
-                box-shadow:
-                    0 20px 40px rgba(0, 0, 0, 0.5),
-                    0 0 0 0.5px rgba(255, 255, 255, 0.1),
-                    inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
-            }
-
-            .contact-icon {
-                box-shadow:
-                    0 2px 6px rgba(59, 130, 246, 0.4),
-                    inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
-            }
-
-            .qr-code {
-                border-width: 1px;
-            }
-        }
-
         /* Accessibility improvements */
         @media (prefers-reduced-motion: reduce) {
             .business-card {
@@ -590,12 +532,13 @@
             .apple-logo {
                 animation: none !important;
             }
-        }
 
-        /* Touch improvements for mobile */
-        @media (hover: none) and (pointer: coarse) {
-            .business-card:active {
-                transform: scale(0.98);
+            .dynamic-island {
+                transition: none;
+            }
+
+            .camera-dot, .mic-dot {
+                animation: none !important;
             }
         }
     </style>
@@ -609,7 +552,18 @@
     <div class="card-container">
         <div class="business-card">
             <div class="glass-overlay"></div>
-            <div class="flash"></div>
+            
+            <!-- Dynamic Island -->
+            <div class="dynamic-island compact" id="dynamicIsland">
+                <div class="island-content">
+                    <!-- Compact content - only camera and mic dots -->
+                    <div class="compact-content">
+                        <div class="camera-dot"></div>
+                        <div class="mic-dot"></div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="side-button"></div>
             <div class="card-content">
                 <div class="header-section">
@@ -618,7 +572,6 @@
                         <p class="tagline apple active">Apple Authorised Store</p>
                         <p class="tagline bajaj">0% Interest on Bajaj Finserv</p>
                         <p class="tagline service">Sales & Service & Repair</p>
-                        <!-- <p class="tagline repair">Expert Repair Solutions</p> -->
                     </div>
                 </div>
                 <div class="contact-section">
@@ -673,166 +626,156 @@
                                     d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
                             </svg>
                         </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                            <path
-                                d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
+                        
                         <div class="apple-logo">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
                             </svg>
                         </div>
+                        
                         <div class="apple-logo">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
                             </svg>
                         </div>
+                        
                         <div class="apple-logo">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
                             </svg>
                         </div>
+                        
                         <div class="apple-logo">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
                             </svg>
                         </div>
+                        
                         <div class="apple-logo">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
                             </svg>
                         </div>
-                        <path
-                            d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                        </svg>
-
+                        
                         <div class="apple-logo">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
                             </svg>
                         </div>
+                        
                         <div class="apple-logo">
                             <svg viewBox="0 0 24 24">
                                 <path
                                     d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
                             </svg>
                         </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-
-
                     </div>
-                    <script>
-                        // Rotating taglines functionality
-                        const taglines = document.querySelectorAll('.tagline');
-                        let currentTaglineIndex = 0;
+                </div>
+            </div>
+        </div>
+    </div>
 
-                        function rotateTagline() {
-                            // Fade out current tagline
-                            taglines[currentTaglineIndex].classList.remove('active');
-                            taglines[currentTaglineIndex].classList.add('fade-out');
+    <script>
+        // Dynamic Island functionality - static version
+        const dynamicIsland = document.getElementById('dynamicIsland');
+        
+        // No animation or resizing - just keep it static with pulsing dots
 
-                            // Move to next tagline
-                            currentTaglineIndex = (currentTaglineIndex + 1) % taglines.length;
+        // Rotating taglines functionality
+        const taglines = document.querySelectorAll('.tagline');
+        let currentTaglineIndex = 0;
 
-                            // Small delay before showing next tagline
-                            setTimeout(() => {
-                                // Remove fade-out class from all taglines
-                                taglines.forEach(tagline => {
-                                    tagline.classList.remove('fade-out');
-                                });
+        function rotateTagline() {
+            // Fade out current tagline
+            taglines[currentTaglineIndex].classList.remove('active');
+            taglines[currentTaglineIndex].classList.add('fade-out');
 
-                                // Show new tagline
-                                taglines[currentTaglineIndex].classList.add('active');
-                            }, 300);
-                        }
+            // Move to next tagline
+            currentTaglineIndex = (currentTaglineIndex + 1) % taglines.length;
 
-                        // Start rotation after page loads
-                        let taglineInterval;
+            // Small delay before showing next tagline
+            setTimeout(() => {
+                // Remove fade-out class from all taglines
+                taglines.forEach(tagline => {
+                    tagline.classList.remove('fade-out');
+                });
 
-                        function startTaglineRotation() {
-                            taglineInterval = setInterval(rotateTagline, 3000); // Change every 3 seconds
-                        }
+                // Show new tagline
+                taglines[currentTaglineIndex].classList.add('active');
+            }, 300);
+        }
 
-                        // Pause rotation on hover
-                        const businessCard = document.querySelector('.business-card');
-                        businessCard.addEventListener('mouseenter', () => {
-                            clearInterval(taglineInterval);
-                        });
+        // Start rotation after page loads
+        let taglineInterval;
 
-                        businessCard.addEventListener('mouseleave', () => {
-                            startTaglineRotation();
-                        });
+        function startTaglineRotation() {
+            taglineInterval = setInterval(rotateTagline, 3000); // Change every 3 seconds
+        }
 
-                        // Function to download business card image
-                        function downloadBusinessCardImage() {
-                            // Replace 'your-card-image.png' with your actual image file name
-                            const imageUrl = '/Test1.0/image.png';
+        // Pause tagline rotation on hover
+        businessCard.addEventListener('mouseenter', () => {
+            clearInterval(taglineInterval);
+        });
 
-                            const a = document.createElement('a');
-                            a.href = imageUrl;
-                            a.download = 'Hi-Tech-Computer-Mobile-Business-Card.png';
-                            document.body.appendChild(a);
-                            a.click();
-                            document.body.removeChild(a);
+        businessCard.addEventListener('mouseleave', () => {
+            startTaglineRotation();
+        });
 
-                            // Show notification
-                            showDownloadNotification();
-                        }
+        // Function to download business card image
+        function downloadBusinessCardImage() {
+            // Replace 'your-card-image.png' with your actual image file name
+            const imageUrl = '/Test1.0/image.png';
 
-                        // Function to show download notification
-                        function showDownloadNotification() {
-                            const notification = document.getElementById('downloadNotification');
-                            notification.classList.add('show');
+            const a = document.createElement('a');
+            a.href = imageUrl;
+            a.download = 'Hi-Tech-Computer-Mobile-Business-Card.png';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
 
-                            setTimeout(() => {
-                                notification.classList.remove('show');
-                            }, 3000);
-                        }
+            // Show notification
+            showDownloadNotification();
+        }
 
-                        // Initialize when page loads
-                        window.addEventListener('load', function () {
-                            // Start tagline rotation
-                            setTimeout(() => {
-                                startTaglineRotation();
-                            }, 2000); // Start rotating after 2 seconds
+        // Function to show download notification
+        function showDownloadNotification() {
+            const notification = document.getElementById('downloadNotification');
+            notification.classList.add('show');
 
-                            // Auto-download image
-                            setTimeout(() => {
-                                downloadBusinessCardImage();
-                            }, 1000);
-                        });
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
 
-                        // Optional: Allow manual download by clicking the card
-                        businessCard.addEventListener('click', function () {
-                            downloadBusinessCardImage();
-                        });
-                    </script>
+        // Initialize when page loads
+        window.addEventListener('load', function () {
+            // Start tagline rotation
+            setTimeout(() => {
+                startTaglineRotation();
+            }, 2000);
+
+            // Dynamic Island is static - no initialization needed
+
+            // Auto-download image
+            setTimeout(() => {
+                downloadBusinessCardImage();
+            }, 1000);
+        });
+
+        // Optional: Allow manual download by clicking the card
+        businessCard.addEventListener('click', function (e) {
+            // Don't trigger download if clicking on dynamic island
+            if (!e.target.closest('.dynamic-island')) {
+                downloadBusinessCardImage();
+            }
+        });
+    </script>
 </body>
+
+</html>
