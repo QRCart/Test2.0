@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hitech Computer & Mobile - Business Card</title>
+  <title>Hi-Tech Computer & Mobile - Business Card</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
     
     * { 
       margin: 0; 
@@ -15,13 +15,14 @@
     
     body {
       min-height: 100vh;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'SF Pro Display', 'Inter', system-ui, -apple-system, sans-serif;
-      padding: 16px;
+      font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
+      padding: 1rem;
       position: relative;
+      overflow-x: hidden;
     }
     
     body::before {
@@ -29,321 +30,362 @@
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(147, 51, 234, 0.1) 0%, transparent 50%);
+        radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
     
     .card-container { 
-      perspective: 1500px; 
-      transform-style: preserve-3d;
       width: 100%;
-      max-width: 420px;
-    }
-    
-    .visiting-card {
-      width: 100%;
-      aspect-ratio: 420/270;
-      max-width: 420px;
+      max-width: min(90vw, 400px);
       min-width: 280px;
-      background: linear-gradient(145deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
-      border-radius: clamp(16px, 4vw, 28px);
-      position: relative;
-      overflow: visible;
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 
-                  0 0 0 1px rgba(255, 255, 255, 0.1),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      cursor: pointer;
-      transform-style: preserve-3d;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      aspect-ratio: 1.6/1;
     }
     
+    .business-card {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(145deg, #1e293b 0%, #334155 30%, #1e293b 100%);
+      border-radius: clamp(12px, 3vw, 24px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5), 
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .business-card:hover {
+      transform: translateY(-8px);
+    }
+    
+    /* Camera flash effect */
     .flash {
       position: absolute;
-      top: clamp(8px, 2vw, 10px);
-      right: clamp(12px, 3vw, 15px);
-      width: clamp(10px, 2.5vw, 12px);
-      height: clamp(10px, 2.5vw, 12px);
-      background: radial-gradient(circle, #fff, #ddd);
+      top: clamp(8px, 2vw, 12px);
+      right: clamp(8px, 2vw, 12px);
+      width: clamp(8px, 2vw, 10px);
+      height: clamp(8px, 2vw, 10px);
+      background: radial-gradient(circle, #fff 0%, #e5e5e5 100%);
       border-radius: 50%;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+    
+    /* Side button */
+    .side-button {
+      position: absolute;
+      left: -2px;
+      top: 30%;
+      width: clamp(3px, 0.8vw, 4px);
+      height: clamp(16px, 4vw, 20px);
+      background: linear-gradient(90deg, #f59e0b, #d97706);
+      border-radius: 0 2px 2px 0;
+      box-shadow: -1px 0 4px rgba(245, 158, 11, 0.4);
+      z-index: 10;
     }
     
     .card-content {
-      padding: clamp(40px, 8vw, 50px) clamp(20px, 5vw, 35px) clamp(20px, 5vw, 30px);
+      padding: clamp(20px, 5vw, 32px);
       height: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: space-between;
       position: relative;
-      z-index: 3;
+      z-index: 5;
     }
     
-    .company-info { 
-      margin-bottom: clamp(8px, 2vw, 12px); 
+    /* Header section */
+    .header-section {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     
     .company-name {
-      font-size: clamp(18px, 5vw, 26px);
+      font-size: clamp(16px, 4.5vw, 22px);
       font-weight: 700;
-      color: #fff;
-      margin-bottom: clamp(3px, 0.8vw, 5px);
-      letter-spacing: -0.5px;
-      line-height: 1.2;
+      color: #ffffff;
+      margin-bottom: clamp(4px, 1vw, 6px);
+      letter-spacing: -0.3px;
+      line-height: 1.1;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-      word-break: break-word;
     }
     
     .tagline {
-      font-size: clamp(10px, 2.5vw, 14px);
-      color: #a1a1aa;
-      margin-bottom: clamp(5px, 1.2vw, 8px);
+      font-size: clamp(8px, 2.2vw, 11px);
+      color: #94a3b8;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      line-height: 1.3;
+      letter-spacing: 0.8px;
+      line-height: 1.2;
+      margin-bottom: clamp(8px, 2vw, 12px);
     }
     
-    .contact-section { 
-      display: flex; 
+    /* Contact section */
+    .contact-section {
+      flex: 2;
+      display: flex;
       flex-direction: column;
-      gap: clamp(4px, 1vw, 6px);
+      justify-content: flex-end;
+      gap: clamp(6px, 1.5vw, 8px);
     }
     
     .contact-item {
       display: flex;
       align-items: center;
-      gap: clamp(12px, 3vw, 18px);
-      color: #e4e4e7;
-      font-size: clamp(11px, 2.8vw, 14px);
+      gap: clamp(8px, 2.5vw, 12px);
+      color: #e2e8f0;
+      font-size: clamp(9px, 2.5vw, 12px);
       font-weight: 500;
-      transition: all 0.3s ease;
-      padding: clamp(4px, 1vw, 6px) 0;
-      border-radius: 12px;
-      line-height: 1.4;
+      line-height: 1.3;
+      padding: clamp(2px, 0.5vw, 4px) 0;
     }
     
-    .contact-item span {
+    .contact-text {
       flex: 1;
       word-break: break-word;
+      hyphens: auto;
     }
     
     .contact-icon {
-      width: clamp(20px, 5vw, 24px);
-      height: clamp(20px, 5vw, 24px);
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      border-radius: clamp(8px, 2vw, 10px);
+      width: clamp(16px, 4vw, 20px);
+      height: clamp(16px, 4vw, 20px);
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: clamp(4px, 1vw, 6px);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.2);
       flex-shrink: 0;
+      box-shadow: 
+        0 3px 8px rgba(59, 130, 246, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
     }
     
     .contact-icon svg { 
-      width: clamp(10px, 2.5vw, 12px);
-      height: clamp(10px, 2.5vw, 12px);
+      width: clamp(8px, 2vw, 10px);
+      height: clamp(8px, 2vw, 10px);
       fill: white; 
     }
     
-    .titanium-overlay {
+    /* QR Section */
+    .qr-item {
+      display: flex;
+      align-items: center;
+      gap: clamp(8px, 2.5vw, 12px);
+      color: #e2e8f0;
+      font-size: clamp(9px, 2.5vw, 12px);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    
+    .qr-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(8px, 2vw, 12px);
+    }
+    
+    .qr-code {
+      width: clamp(32px, 8vw, 48px);
+      height: clamp(32px, 8vw, 48px);
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      border-radius: clamp(4px, 1vw, 6px);
+      background: 
+        linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+      box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    
+    .qr-code::before {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 70%;
+      background: 
+        repeating-linear-gradient(90deg, 
+          rgba(255, 255, 255, 0.1) 0px, 
+          rgba(255, 255, 255, 0.1) 1px, 
+          transparent 1px, 
+          transparent 3px),
+        repeating-linear-gradient(0deg, 
+          rgba(255, 255, 255, 0.1) 0px, 
+          rgba(255, 255, 255, 0.1) 1px, 
+          transparent 1px, 
+          transparent 3px);
+      border-radius: 1px;
+      opacity: 0.4;
+    }
+    
+    .qr-code::after {
+      content: 'QR';
+      color: rgba(255, 255, 255, 0.4);
+      font-size: clamp(6px, 1.5vw, 8px);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      position: absolute;
+      z-index: 1;
+    }
+    
+    /* Glass overlay effect */
+    .glass-overlay {
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.03) 0%, transparent 50%),
-        linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.02) 50%, transparent 60%);
-      border-radius: clamp(16px, 4vw, 28px);
-      z-index: 2;
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.05) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.03) 50%, transparent 60%);
+      border-radius: clamp(12px, 3vw, 24px);
       pointer-events: none;
+      z-index: 3;
     }
-    
-    .action-button {
-      position: absolute;
-      left: -3px;
-      top: clamp(80px, 20vw, 120px);
-      width: clamp(4px, 1vw, 6px);
-      height: clamp(20px, 5vw, 25px);
-      background: linear-gradient(90deg, #ff6b35, #f7931e);
-      border-radius: 0 3px 3px 0;
-      z-index: 9;
-      box-shadow: -2px 0 8px rgba(255, 107, 53, 0.4),
-                  inset 1px 0 0 rgba(255, 255, 255, 0.2);
+
+    /* Download notification */
+    .download-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      z-index: 1000;
+      font-size: 14px;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateX(100px);
       transition: all 0.3s ease;
     }
+
+    .download-notification.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
     
-    /* Touch-friendly styles for mobile */
+    /* Mobile optimizations */
     @media (max-width: 480px) {
       body {
-        padding: 12px;
+        padding: 0.75rem;
       }
       
-      .visiting-card {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
-                    0 0 0 1px rgba(255, 255, 255, 0.1),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      .card-container {
+        max-width: 95vw;
       }
       
-      .contact-item {
-        gap: clamp(10px, 3vw, 15px);
+      .business-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .download-notification {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        font-size: 13px;
+        padding: 10px 16px;
       }
     }
     
     /* Very small screens */
     @media (max-width: 320px) {
       body {
-        padding: 8px;
+        padding: 0.5rem;
       }
       
       .card-content {
-        padding: clamp(35px, 7vh, 40px) clamp(16px, 4vw, 20px) clamp(16px, 4vw, 20px);
+        padding: clamp(16px, 4vw, 20px);
       }
       
-      .company-name {
-        font-size: clamp(16px, 5vw, 20px);
-      }
-      
-      .tagline {
-        font-size: clamp(9px, 2.5vw, 12px);
-        letter-spacing: 0.3px;
-      }
-      
-      .contact-item {
-        font-size: clamp(10px, 3vw, 12px);
-        gap: clamp(8px, 2.5vw, 12px);
+      .contact-item,
+      .qr-item {
+        gap: clamp(6px, 2vw, 8px);
       }
     }
     
-    /* Landscape orientation on mobile */
+    /* Landscape orientation adjustments */
     @media (max-height: 500px) and (orientation: landscape) {
       body {
-        padding: 8px;
+        padding: 0.5rem;
       }
       
-      .visiting-card {
+      .card-container {
+        max-width: min(70vw, 400px);
         max-height: 80vh;
       }
-      
-      .card-content {
-        padding: clamp(30px, 6vh, 35px) clamp(20px, 4vw, 30px) clamp(15px, 3vh, 20px);
-      }
     }
-    
-    /* QR Code Section Styles */
-    .qr-section {
-      align-items: center;
-    }
-    
-    .qr-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: clamp(12px, 3vw, 16px);
-      flex: 1;
-    }
-    
-    .qr-code-placeholder {
-      width: clamp(60px, 15vw, 80px);
-      height: clamp(60px, 15vw, 80px);
-      border: 2px solid rgba(255, 255, 255, 0.2);
-      border-radius: clamp(8px, 2vw, 12px);
-      background: linear-gradient(145deg, 
-        rgba(255, 255, 255, 0.05) 0%, 
-        rgba(255, 255, 255, 0.02) 50%, 
-        rgba(255, 255, 255, 0.05) 100%);
-      backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    }
-    
-    .qr-code-placeholder::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      height: 80%;
-      background: 
-        repeating-linear-gradient(90deg, 
-          rgba(255, 255, 255, 0.05) 0px, 
-          rgba(255, 255, 255, 0.05) 2px, 
-          transparent 2px, 
-          transparent 4px),
-        repeating-linear-gradient(0deg, 
-          rgba(255, 255, 255, 0.05) 0px, 
-          rgba(255, 255, 255, 0.05) 2px, 
-          transparent 2px, 
-          transparent 4px);
-      border-radius: 2px;
-      opacity: 0.3;
-    }
-    
-    .qr-code-placeholder::after {
-      content: 'QR';
-      color: rgba(255, 255, 255, 0.3);
-      font-size: clamp(10px, 2.5vw, 12px);
-      font-weight: 600;
-      letter-spacing: 1px;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-    }
-    
-    /* QR Code Image Styles (for when image is added) */
-    .qr-code-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: clamp(6px, 1.5vw, 8px);
-    }
-    
-    /* Hide placeholder content when image is present */
-    .qr-code-placeholder:has(img)::before,
-    .qr-code-placeholder:has(img)::after {
-      display: none;
-    }
-    
-    /* Hover effects for QR code */
     
     /* High DPI displays */
     @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-      .flash {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      .business-card {
+        box-shadow: 
+          0 20px 40px rgba(0, 0, 0, 0.5), 
+          0 0 0 0.5px rgba(255, 255, 255, 0.1),
+          inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
       }
       
       .contact-icon {
-        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4),
-                    inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
+        box-shadow: 
+          0 2px 6px rgba(59, 130, 246, 0.4),
+          inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
       }
       
-      .qr-code-placeholder {
+      .qr-code {
         border-width: 1px;
+      }
+    }
+    
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+      .business-card {
+        transition: none;
+      }
+      
+      .business-card:hover {
+        transform: none;
+      }
+
+      .download-notification {
+        transition: none;
+      }
+    }
+    
+    /* Touch improvements for mobile */
+    @media (hover: none) and (pointer: coarse) {
+      .business-card:active {
+        transform: scale(0.98);
       }
     }
   </style>
 </head>
 <body>
+  <div class="download-notification" id="downloadNotification">
+    📱 Business card image downloaded!
+  </div>
+
   <div class="card-container">
-    <div class="visiting-card">
-      <div class="titanium-overlay"></div>
+    <div class="business-card">
+      <div class="glass-overlay"></div>
       <div class="flash"></div>
-      <div class="action-button"></div>
+      <div class="side-button"></div>
+      
       <div class="card-content">
-        <div class="company-info">
-          <h1 class="company-name">Hitech Computer & Mobile</h1>
-          <p class="tagline">SPECIAL DEALS IN APPLE MOBILES</p>
+        <div class="header-section">
+          <h1 class="company-name">Hi-Tech Computer & Mobile</h1>
+          <p class="tagline">All Kind of Mobile & Accessories</p>
         </div>
+        
         <div class="contact-section">
           <div class="contact-item">
             <div class="contact-icon">
@@ -351,36 +393,77 @@
                 <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
               </svg>
             </div>
-            <span>094636 79014</span>
+            <span class="contact-text">+91 94636-79014 , +91 94636-79014</span>
           </div>
+          
           <div class="contact-item">
             <div class="contact-icon">
               <svg viewBox="0 0 24 24">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
               </svg>
             </div>
-            <span>Opp Govt Kirti College Nial Patran</span>
+            <span class="contact-text">Opp.Govt . kirti college Nail, Patran</span>
           </div>
-          <div class="contact-item qr-section">
+          
+          <div class="qr-item">
             <div class="contact-icon">
               <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="4" height="4" rx="1.2" />
-                <rect x="17" y="3" width="4" height="4" rx="1.2" />
-                <rect x="3" y="17" width="4" height="4" rx="1.2" />
-                <rect x="17" y="17" width="4" height="4" rx="1.2" />
-                <rect x="10" y="10" width="4" height="4" rx="1.2" />
+                <rect x="3" y="3" width="4" height="4" rx="1" />
+                <rect x="17" y="3" width="4" height="4" rx="1" />
+                <rect x="3" y="17" width="4" height="4" rx="1" />
+                <rect x="17" y="17" width="4" height="4" rx="1" />
+                <rect x="10" y="10" width="4" height="4" rx="1" />
               </svg>
             </div>
             <div class="qr-content">
-              <span>Scan QR to view all prices</span>
-              <div class="qr-code-placeholder">
-                <!-- QR Code image will be added here -->
-              </div>
+              <span class="contact-text">Scan for catalog & pricing</span>
+              <div class="qr-code"></div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    // Function to download your business card image
+    function downloadBusinessCardImage() {
+      // Replace 'your-card-image.png' with your actual image file name
+      const imageUrl = '/Test2.0/image.png';
+      
+      const a = document.createElement('a');
+      a.href = imageUrl;
+      a.download = 'Hi-Tech-Computer-Mobile-Business-Card.png';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      
+      // Show notification
+      showDownloadNotification();
+    }
+    
+    // Function to show download notification
+    function showDownloadNotification() {
+      const notification = document.getElementById('downloadNotification');
+      notification.classList.add('show');
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+    
+    // Auto-download when page loads
+    window.addEventListener('load', function() {
+      // Add a small delay to ensure page is fully loaded
+      setTimeout(() => {
+        downloadBusinessCardImage();
+      }, 1000);
+    });
+
+    // Optional: Allow manual download by clicking the card
+    document.querySelector('.business-card').addEventListener('click', function() {
+      downloadBusinessCardImage();
+    });
+  </script>
 </body>
 </html>
