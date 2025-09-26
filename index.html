@@ -116,6 +116,14 @@
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
     
+    /* Rotating tagline styles */
+    .tagline-container {
+      height: clamp(16px, 4vw, 20px);
+      overflow: hidden;
+      margin-bottom: clamp(8px, 2vw, 12px);
+      position: relative;
+    }
+    
     .tagline {
       font-size: clamp(8px, 2.2vw, 11px);
       color: #94a3b8;
@@ -123,7 +131,54 @@
       text-transform: uppercase;
       letter-spacing: 0.8px;
       line-height: 1.2;
-      margin-bottom: clamp(8px, 2vw, 12px);
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .tagline.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .tagline.fade-out {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    
+    /* Special styling for different taglines */
+    .tagline.apple {
+      color: #a3a3a3;
+      background: linear-gradient(45deg, #a3a3a3, #d4d4d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .tagline.bajaj {
+      color: #10b981;
+      background: linear-gradient(45deg, #10b981, #34d399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .tagline.service {
+      color: #3b82f6;
+      background: linear-gradient(45deg, #3b82f6, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .tagline.repair {
+      color: #f59e0b;
+      background: linear-gradient(45deg, #f59e0b, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     
     /* Contact section */
@@ -131,7 +186,7 @@
       flex: 2;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      /* justify-content: flex-end; */
       gap: clamp(6px, 1.5vw, 8px);
     }
     
@@ -359,6 +414,10 @@
       .download-notification {
         transition: none;
       }
+      
+      .tagline {
+        transition: none;
+      }
     }
     
     /* Touch improvements for mobile */
@@ -383,7 +442,12 @@
       <div class="card-content">
         <div class="header-section">
           <h1 class="company-name">Hi-Tech Computer & Mobile</h1>
-          <p class="tagline">All Kind of Mobile & Accessories</p>
+          <div class="tagline-container">
+            <p class="tagline apple active">Apple Authorised Store</p>
+            <p class="tagline bajaj">0% Interest on Bajaj Finserv</p>
+            <p class="tagline service">Sales & Service & Repair</p>
+            <!-- <p class="tagline repair">Expert Repair Solutions</p> -->
+          </div>
         </div>
         
         <div class="contact-section">
@@ -426,10 +490,51 @@
   </div>
 
   <script>
-    // Function to download your business card image
+    // Rotating taglines functionality
+    const taglines = document.querySelectorAll('.tagline');
+    let currentTaglineIndex = 0;
+    
+    function rotateTagline() {
+      // Fade out current tagline
+      taglines[currentTaglineIndex].classList.remove('active');
+      taglines[currentTaglineIndex].classList.add('fade-out');
+      
+      // Move to next tagline
+      currentTaglineIndex = (currentTaglineIndex + 1) % taglines.length;
+      
+      // Small delay before showing next tagline
+      setTimeout(() => {
+        // Remove fade-out class from all taglines
+        taglines.forEach(tagline => {
+          tagline.classList.remove('fade-out');
+        });
+        
+        // Show new tagline
+        taglines[currentTaglineIndex].classList.add('active');
+      }, 300);
+    }
+    
+    // Start rotation after page loads
+    let taglineInterval;
+    
+    function startTaglineRotation() {
+      taglineInterval = setInterval(rotateTagline, 3000); // Change every 3 seconds
+    }
+    
+    // Pause rotation on hover
+    const businessCard = document.querySelector('.business-card');
+    businessCard.addEventListener('mouseenter', () => {
+      clearInterval(taglineInterval);
+    });
+    
+    businessCard.addEventListener('mouseleave', () => {
+      startTaglineRotation();
+    });
+    
+    // Function to download business card image
     function downloadBusinessCardImage() {
       // Replace 'your-card-image.png' with your actual image file name
-      const imageUrl = '/Test2.0/image.png';
+      const imageUrl = '/Test1.0/image.png';
       
       const a = document.createElement('a');
       a.href = imageUrl;
@@ -452,16 +557,21 @@
       }, 3000);
     }
     
-    // Auto-download when page loads
+    // Initialize when page loads
     window.addEventListener('load', function() {
-      // Add a small delay to ensure page is fully loaded
+      // Start tagline rotation
+      setTimeout(() => {
+        startTaglineRotation();
+      }, 2000); // Start rotating after 2 seconds
+      
+      // Auto-download image
       setTimeout(() => {
         downloadBusinessCardImage();
       }, 1000);
     });
 
     // Optional: Allow manual download by clicking the card
-    document.querySelector('.business-card').addEventListener('click', function() {
+    businessCard.addEventListener('click', function() {
       downloadBusinessCardImage();
     });
   </script>
