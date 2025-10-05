@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hi-Tech Computer & Mobile - Business Card</title>
+    <title>Ballenza Saloons & Academy</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
-
         * {
             margin: 0;
             padding: 0;
@@ -15,824 +12,380 @@
         }
 
         body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-family: 'Poppins', 'Inter', system-ui, -apple-system, sans-serif;
-            padding: 1rem;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
             position: relative;
-            overflow-x: hidden;
+            overflow: hidden;
         }
 
         body::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
-            pointer-events: none;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveBackground 20s linear infinite;
         }
 
-        .card-container {
-            width: 100%;
-            max-width: min(90vw, 400px);
-            min-width: 280px;
-            aspect-ratio: 1.6/1;
+        @keyframes moveBackground {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
 
-        .business-card {
+        .card {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(145deg, #1e293b 0%, #334155 30%, #1e293b 100%);
-            border-radius: clamp(12px, 3vw, 24px);
+            max-width: 600px;
+            min-height: 350px;
+            background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
+            border-radius: 25px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.2);
+            padding: 30px 25px;
             position: relative;
             overflow: hidden;
-            box-shadow:
-                0 25px 50px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: cardFloat 3s ease-in-out infinite;
         }
 
-        .business-card:hover {
-            transform: translateY(-8px);
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
-        /* Camera flash effect */
-        .flash {
-            position: absolute;
-            top: clamp(8px, 2vw, 12px);
-            right: clamp(8px, 2vw, 12px);
-            width: clamp(8px, 2vw, 10px);
-            height: clamp(8px, 2vw, 10px);
-            background: radial-gradient(circle, #fff 0%, #e5e5e5 100%);
-            border-radius: 50%;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-        }
-
-        /* Side button */
-        .side-button {
-            position: absolute;
-            left: -2px;
-            top: 30%;
-            width: clamp(3px, 0.8vw, 4px);
-            height: clamp(16px, 4vw, 20px);
-            background: linear-gradient(90deg, #f59e0b, #d97706);
-            border-radius: 0 2px 2px 0;
-            box-shadow: -1px 0 4px rgba(245, 158, 11, 0.4);
-            z-index: 10;
-        }
-
-        /* Apple logos animation container */
-        .apple-animation-container {
-            position: absolute;
-            bottom: clamp(8px, 2vw, 12px);
-            left: 0;
-            right: 0;
-            height: clamp(20px, 5vw, 30px);
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .apple-logo {
-            position: absolute;
-            width: clamp(12px, 3vw, 18px);
-            height: clamp(12px, 3vw, 18px);
-            opacity: 0.6;
-            animation: floatApple 8s linear infinite;
-        }
-
-        .apple-logo svg {
-            width: 100%;
-            height: 100%;
-            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
-        }
-
-        /* Different colors for Apple logos */
-        .apple-logo:nth-child(1) svg {
-            fill: #ff6b6b;
-        }
-
-        .apple-logo:nth-child(2) svg {
-            fill: #4ecdc4;
-        }
-
-        .apple-logo:nth-child(3) svg {
-            fill: #45b7d1;
-        }
-
-        .apple-logo:nth-child(4) svg {
-            fill: #f9ca24;
-        }
-
-        .apple-logo:nth-child(5) svg {
-            fill: #6c5ce7;
-        }
-
-        .apple-logo:nth-child(6) svg {
-            fill: #a29bfe;
-        }
-
-        .apple-logo:nth-child(7) svg {
-            fill: #fd79a8;
-        }
-
-        .apple-logo:nth-child(8) svg {
-            fill: #00b894;
-        }
-
-        .apple-logo:nth-child(9) svg {
-            fill: #e17055;
-        }
-
-        .apple-logo:nth-child(10) svg {
-            fill: #fdcb6e;
-        }
-
-        /* Animation delays for staggered effect */
-        .apple-logo:nth-child(1) {
-            animation-delay: 0s;
-            top: 20%;
-        }
-
-        .apple-logo:nth-child(2) {
-            animation-delay: -1s;
-            top: 60%;
-        }
-
-        .apple-logo:nth-child(3) {
-            animation-delay: -2s;
-            top: 10%;
-        }
-
-        .apple-logo:nth-child(4) {
-            animation-delay: -3s;
-            top: 70%;
-        }
-
-        .apple-logo:nth-child(5) {
-            animation-delay: -4s;
-            top: 40%;
-        }
-
-        .apple-logo:nth-child(6) {
-            animation-delay: -5s;
-            top: 80%;
-        }
-
-        .apple-logo:nth-child(7) {
-            animation-delay: -6s;
-            top: 30%;
-        }
-
-        .apple-logo:nth-child(8) {
-            animation-delay: -7s;
-            top: 50%;
-        }
-
-        .apple-logo:nth-child(9) {
-            animation-delay: -1.5s;
-            top: 15%;
-        }
-
-        .apple-logo:nth-child(10) {
-            animation-delay: -2.5s;
-            top: 65%;
-        }
-
-        @keyframes floatApple {
-            0% {
-                left: -30px;
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 0.6;
-            }
-
-            50% {
-                transform: translateY(-5px) rotate(180deg);
-            }
-
-            90% {
-                opacity: 0.6;
-            }
-
-            100% {
-                left: calc(100% + 30px);
-                transform: translateY(0) rotate(360deg);
-                opacity: 0;
+        @media (max-width: 768px) {
+            .card {
+                min-height: auto;
+                padding: 25px 20px;
+                border-radius: 20px;
             }
         }
 
-        .card-content {
-            padding: clamp(20px, 5vw, 32px);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            z-index: 5;
-        }
-
-        /* Header section */
-        .header-section {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-
-        .company-name {
-            font-size: clamp(18px, 5vw, 24px);
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: clamp(4px, 1vw, 6px);
-            letter-spacing: -0.3px;
-            line-height: 1.1;
-            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-            z-index: 10;
-            position: relative;
-        }
-
-        /* Rotating tagline styles */
-        .tagline-container {
-            height: clamp(16px, 4vw, 20px);
-            overflow: hidden;
-            margin-bottom: clamp(8px, 2vw, 12px);
-            position: relative;
-        }
-
-        .tagline {
-            font-size: clamp(8px, 2.2vw, 11px);
-            color: #94a3b8;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            line-height: 1.2;
-            position: absolute;
-            width: 100%;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .tagline.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .tagline.fade-out {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
-
-        /* Special styling for different taglines */
-        .tagline.apple {
-            color: #a3a3a3;
-            background: linear-gradient(45deg, #a3a3a3, #d4d4d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tagline.bajaj {
-            color: #10b981;
-            background: linear-gradient(45deg, #10b981, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tagline.service {
-            color: #3b82f6;
-            background: linear-gradient(45deg, #3b82f6, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tagline.repair {
-            color: #f59e0b;
-            background: linear-gradient(45deg, #f59e0b, #fbbf24);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        /* Contact section */
-        .contact-section {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            /* justify-content: flex-end; */
-            gap: clamp(6px, 1.5vw, 8px);
-            padding-bottom: clamp(25px, 6vw, 35px);
-            /* Add space for floating apples */
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: clamp(8px, 2.5vw, 12px);
-            color: #f1f5f9;
-            font-size: clamp(10px, 2.8vw, 13px);
-            font-weight: 600;
-            line-height: 1.4;
-            padding: clamp(3px, 0.8vw, 5px) 0;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            position: relative;
-        }
-
-        .contact-text {
-            flex: 1;
-            word-break: break-word;
-            hyphens: auto;
-            color: #f8fafc;
-            font-weight: 600;
-        }
-
-        .contact-icon {
-            width: clamp(16px, 4vw, 20px);
-            height: clamp(16px, 4vw, 20px);
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-            border-radius: clamp(4px, 1vw, 6px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            box-shadow:
-                0 3px 8px rgba(59, 130, 246, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-
-        .contact-icon svg {
-            width: clamp(8px, 2vw, 10px);
-            height: clamp(8px, 2vw, 10px);
-            fill: white;
-        }
-
-        /* QR Section */
-        .qr-item {
-            display: flex;
-            align-items: center;
-            gap: clamp(8px, 2.5vw, 12px);
-            color: #f1f5f9;
-            font-size: clamp(10px, 2.8vw, 13px);
-            font-weight: 600;
-            line-height: 1.4;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-            z-index: 10;
-            position: relative;
-        }
-
-        .qr-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: clamp(8px, 2vw, 12px);
-        }
-
-        .qr-code {
-            width: clamp(32px, 8vw, 48px);
-            height: clamp(32px, 8vw, 48px);
-            border: 1.5px solid rgba(255, 255, 255, 0.2);
-            border-radius: clamp(4px, 1vw, 6px);
-            background:
-                linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            flex-shrink: 0;
-            box-shadow:
-                0 2px 8px rgba(0, 0, 0, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .qr-code::before {
+        .card::before {
             content: '';
             position: absolute;
-            width: 70%;
-            height: 70%;
-            background:
-                repeating-linear-gradient(90deg,
-                    rgba(255, 255, 255, 0.1) 0px,
-                    rgba(255, 255, 255, 0.1) 1px,
-                    transparent 1px,
-                    transparent 3px),
-                repeating-linear-gradient(0deg,
-                    rgba(255, 255, 255, 0.1) 0px,
-                    rgba(255, 255, 255, 0.1) 1px,
-                    transparent 1px,
-                    transparent 3px);
-            border-radius: 1px;
-            opacity: 0.4;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #d4af37, #f4e5c3, #d4af37, #f4e5c3, #d4af37);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite;
         }
 
-        .qr-code::after {
-            content: 'QR';
-            color: rgba(255, 255, 255, 0.4);
-            font-size: clamp(6px, 1.5vw, 8px);
-            font-weight: 700;
-            letter-spacing: 0.5px;
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .decorative-corner {
             position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-top: 4px solid #d4af37;
+            border-right: 4px solid #d4af37;
+            opacity: 0.4;
+            animation: cornerPulse 2s ease-in-out infinite;
+        }
+
+        .decorative-corner::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border-radius: 50%;
+        }
+
+        @keyframes cornerPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        .decorative-corner-bottom {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            border-bottom: 4px solid #d4af37;
+            border-left: 4px solid #d4af37;
+            opacity: 0.4;
+            animation: cornerPulse 2s ease-in-out infinite 1s;
+        }
+
+        .decorative-corner-bottom::before {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: -4px;
+            width: 15px;
+            height: 15px;
+            background: #d4af37;
+            border-radius: 50%;
+        }
+
+        .scissors-icon {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            opacity: 0.15;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .brand-name {
+            font-size: 42px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #1a1a2e 0%, #4a4a5e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: titleGlow 3s ease-in-out infinite;
+            position: relative;
             z-index: 1;
         }
 
-        /* Glass overlay effect */
-        .glass-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-                linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.03) 50%, transparent 60%);
-            border-radius: clamp(12px, 3vw, 24px);
-            pointer-events: none;
-            z-index: 3;
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
         }
 
-        /* Download notification */
-        .download-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-            z-index: 1000;
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0;
-            transform: translateX(100px);
+        @media (max-width: 768px) {
+            .brand-name {
+                font-size: 32px;
+                letter-spacing: 2px;
+            }
+        }
+
+        .brand-tagline {
+            font-size: 16px;
+            color: #d4af37;
+            margin-bottom: 30px;
+            font-style: italic;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .brand-tagline {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37, transparent);
+            margin: 20px 0;
+            border-radius: 2px;
+            animation: expandDivider 2s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes expandDivider {
+            0%, 100% { width: 80px; }
+            50% { width: 100px; }
+        }
+
+        .info-section {
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            color: #333;
+            padding: 8px;
+            border-radius: 10px;
             transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
         }
 
-        .download-notification.show {
-            opacity: 1;
-            transform: translateX(0);
+        .info-item:nth-child(1) {
+            animation-delay: 0.2s;
         }
 
-        /* Mobile optimizations */
-        @media (max-width: 480px) {
-            body {
-                padding: 0.75rem;
-            }
+        .info-item:nth-child(2) {
+            animation-delay: 0.4s;
+        }
 
-            .card-container {
-                max-width: 95vw;
-            }
+        .info-item:nth-child(3) {
+            animation-delay: 0.6s;
+        }
 
-            .business-card:hover {
-                transform: translateY(-4px);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-
-            .download-notification {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-                font-size: 13px;
-                padding: 10px 16px;
-            }
-
-            .apple-logo {
-                width: clamp(10px, 2.5vw, 14px);
-                height: clamp(10px, 2.5vw, 14px);
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        /* Very small screens */
-        @media (max-width: 320px) {
-            body {
-                padding: 0.5rem;
-            }
+        .info-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateX(5px);
+        }
 
-            .card-content {
-                padding: clamp(16px, 4vw, 20px);
-            }
+        .icon {
+            width: 28px;
+            height: 28px;
+            margin-right: 15px;
+            color: #d4af37;
+            flex-shrink: 0;
+            filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
+            animation: iconBounce 2s ease-in-out infinite;
+        }
 
-            .contact-item,
-            .qr-item {
-                gap: clamp(6px, 2vw, 8px);
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .info-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .info-text {
+                font-size: 14px;
             }
         }
 
-        /* Landscape orientation adjustments */
-        @media (max-height: 500px) and (orientation: landscape) {
-            body {
-                padding: 0.5rem;
-            }
-
-            .card-container {
-                max-width: min(70vw, 400px);
-                max-height: 80vh;
-            }
+        .phone {
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #1a1a2e 0%, #d4af37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* High DPI displays */
-        @media (-webkit-min-device-pixel-ratio: 2),
-        (min-resolution: 192dpi) {
-            .business-card {
-                box-shadow:
-                    0 20px 40px rgba(0, 0, 0, 0.5),
-                    0 0 0 0.5px rgba(255, 255, 255, 0.1),
-                    inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
-            }
-
-            .contact-icon {
-                box-shadow:
-                    0 2px 6px rgba(59, 130, 246, 0.4),
-                    inset 0 0.5px 0 rgba(255, 255, 255, 0.2);
-            }
-
-            .qr-code {
-                border-width: 1px;
-            }
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #d4af37;
+            border-radius: 50%;
+            animation: sparkleAnimation 3s ease-in-out infinite;
+            opacity: 0;
         }
 
-        /* Accessibility improvements */
-        @media (prefers-reduced-motion: reduce) {
-            .business-card {
-                transition: none;
-            }
-
-            .business-card:hover {
-                transform: none;
-            }
-
-            .download-notification {
-                transition: none;
-            }
-
-            .tagline {
-                transition: none;
-            }
-
-            .apple-logo {
-                animation: none !important;
-            }
+        .sparkle:nth-child(1) {
+            top: 15%;
+            left: 20%;
+            animation-delay: 0s;
         }
 
-        /* Touch improvements for mobile */
-        @media (hover: none) and (pointer: coarse) {
-            .business-card:active {
-                transform: scale(0.98);
+        .sparkle:nth-child(2) {
+            top: 40%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(3) {
+            bottom: 30%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        .sparkle:nth-child(4) {
+            top: 60%;
+            right: 25%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes sparkleAnimation {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
             }
         }
     </style>
 </head>
-
 <body>
-    <div class="download-notification" id="downloadNotification">
-        📱 Business card image downloaded!
-    </div>
-
-    <div class="card-container">
-        <div class="business-card">
-            <div class="glass-overlay"></div>
-            <div class="flash"></div>
-            <div class="side-button"></div>
-            <div class="card-content">
-                <div class="header-section">
-                    <h1 class="company-name">Hi-Tech Computer & Mobile</h1>
-                    <div class="tagline-container">
-                        <p class="tagline apple active">Apple Authorised Store</p>
-                        <p class="tagline bajaj">0% Interest on Bajaj Finserv</p>
-                        <p class="tagline service">Sales & Service & Repair</p>
-                        <!-- <p class="tagline repair">Expert Repair Solutions</p> -->
-                    </div>
+    <div class="card">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        
+        <svg class="scissors-icon" viewBox="0 0 24 24" fill="#d4af37">
+            <path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3z"/>
+        </svg>
+        
+        <div class="decorative-corner"></div>
+        <div class="decorative-corner-bottom"></div>
+        
+        <div class="brand-name">BALLENZA</div>
+        <div class="brand-tagline">Saloons & Academy</div>
+        
+        <div class="divider"></div>
+        
+        <div class="info-section">
+            <div class="info-item">
+                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div class="info-text">
+                    Near Old Bus Stand<br>
+                    Patran City
                 </div>
-                <div class="contact-section">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
-                            </svg>
-                        </div>
-                        <span class="contact-text">+91 94636-79014 , +91 94636-79014</span>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                            </svg>
-                        </div>
-                        <span class="contact-text">Opp.Govt . kirti college Nail, Patran</span>
-                    </div>
-
-                    <div class="qr-item">
-                        <div class="contact-icon">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="3" y="3" width="4" height="4" rx="1" />
-                                <rect x="17" y="3" width="4" height="4" rx="1" />
-                                <rect x="3" y="17" width="4" height="4" rx="1" />
-                                <rect x="17" y="17" width="4" height="4" rx="1" />
-                                <rect x="10" y="10" width="4" height="4" rx="1" />
-                            </svg>
-                        </div>
-                        <div class="qr-content">
-                            <span class="contact-text">Scan for catalog & pricing</span>
-                            <div class="qr-code"></div>
-                        </div>
-                    </div>
-
-                    <!-- Floating Apple logos -->
-                    <div class="apple-animation-container">
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                            <path
-                                d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <path
-                            d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                        </svg>
-
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-                        <div class="apple-logo">
-                            <svg viewBox="0 0 24 24">
-                                <path
-                                    d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.19 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" />
-                            </svg>
-                        </div>
-
-
-                    </div>
-                    <script>
-                        // Rotating taglines functionality
-                        const taglines = document.querySelectorAll('.tagline');
-                        let currentTaglineIndex = 0;
-
-                        function rotateTagline() {
-                            // Fade out current tagline
-                            taglines[currentTaglineIndex].classList.remove('active');
-                            taglines[currentTaglineIndex].classList.add('fade-out');
-
-                            // Move to next tagline
-                            currentTaglineIndex = (currentTaglineIndex + 1) % taglines.length;
-
-                            // Small delay before showing next tagline
-                            setTimeout(() => {
-                                // Remove fade-out class from all taglines
-                                taglines.forEach(tagline => {
-                                    tagline.classList.remove('fade-out');
-                                });
-
-                                // Show new tagline
-                                taglines[currentTaglineIndex].classList.add('active');
-                            }, 300);
-                        }
-
-                        // Start rotation after page loads
-                        let taglineInterval;
-
-                        function startTaglineRotation() {
-                            taglineInterval = setInterval(rotateTagline, 3000); // Change every 3 seconds
-                        }
-
-                        // Pause rotation on hover
-                        const businessCard = document.querySelector('.business-card');
-                        businessCard.addEventListener('mouseenter', () => {
-                            clearInterval(taglineInterval);
-                        });
-
-                        businessCard.addEventListener('mouseleave', () => {
-                            startTaglineRotation();
-                        });
-
-                        // Function to download business card image
-                        function downloadBusinessCardImage() {
-                            // Replace 'your-card-image.png' with your actual image file name
-                            const imageUrl = '/Test1.0/image.png';
-
-                            const a = document.createElement('a');
-                            a.href = imageUrl;
-                            a.download = 'Hi-Tech-Computer-Mobile-Business-Card.png';
-                            document.body.appendChild(a);
-                            a.click();
-                            document.body.removeChild(a);
-
-                            // Show notification
-                            showDownloadNotification();
-                        }
-
-                        // Function to show download notification
-                        function showDownloadNotification() {
-                            const notification = document.getElementById('downloadNotification');
-                            notification.classList.add('show');
-
-                            setTimeout(() => {
-                                notification.classList.remove('show');
-                            }, 3000);
-                        }
-
-                        // Initialize when page loads
-                        window.addEventListener('load', function () {
-                            // Start tagline rotation
-                            setTimeout(() => {
-                                startTaglineRotation();
-                            }, 2000); // Start rotating after 2 seconds
-
-                            // Auto-download image
-                            setTimeout(() => {
-                                downloadBusinessCardImage();
-                            }, 1000);
-                        });
-
-                        // Optional: Allow manual download by clicking the card
-                        businessCard.addEventListener('click', function () {
-                            downloadBusinessCardImage();
-                        });
-                    </script>
+            </div>
+            
+            <div class="info-item">
+                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <div class="info-text phone">
+                    +91 98556 96486
+                </div>
+            </div>
+            
+            <div class="info-item">
+                <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                <div class="info-text" style="font-style: italic;">
+                    Professional Hair & Beauty Services<br>
+                    Expert Training Academy
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+</html>
