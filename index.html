@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            background: linear-gradient(135deg, #ffeef8 0%, #ffe0f0 50%, #ffd4ea 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,41 +26,47 @@
         body::before {
             content: '';
             position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveBackground 20s linear infinite;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 192, 203, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255, 218, 224, 0.3) 0%, transparent 50%);
+            animation: floatBubbles 15s ease-in-out infinite;
         }
 
-        @keyframes moveBackground {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        @keyframes floatBubbles {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(20px, -20px); }
+            66% { transform: translate(-20px, 20px); }
         }
 
         .card {
             width: 100%;
             max-width: 600px;
-            min-height: 350px;
-            background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
-            border-radius: 25px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.2);
-            padding: 30px 25px;
+            min-height: 400px;
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f9 100%);
+            border-radius: 30px;
+            box-shadow: 
+                0 30px 80px rgba(255, 105, 180, 0.3),
+                0 0 0 1px rgba(255, 182, 193, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            padding: 35px 30px;
             position: relative;
             overflow: hidden;
-            animation: cardFloat 3s ease-in-out infinite;
+            animation: cardFloat 4s ease-in-out infinite;
         }
 
         @keyframes cardFloat {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(0.5deg); }
         }
 
         @media (max-width: 768px) {
             .card {
                 min-height: auto;
-                padding: 25px 20px;
-                border-radius: 20px;
+                padding: 30px 25px;
+                border-radius: 25px;
             }
         }
 
@@ -70,10 +76,12 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 8px;
-            background: linear-gradient(90deg, #d4af37, #f4e5c3, #d4af37, #f4e5c3, #d4af37);
+            height: 10px;
+            background: linear-gradient(90deg, 
+                #ff69b4, #ff85c1, #ffa6d5, #ffb6e0, #ffc6eb, 
+                #ffb6e0, #ffa6d5, #ff85c1, #ff69b4);
             background-size: 200% 100%;
-            animation: shimmer 3s linear infinite;
+            animation: shimmer 4s linear infinite;
         }
 
         @keyframes shimmer {
@@ -81,65 +89,25 @@
             100% { background-position: 200% 0; }
         }
 
-        .decorative-corner {
+        .flower-decoration {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 100px;
-            height: 100px;
-            border-top: 4px solid #d4af37;
-            border-right: 4px solid #d4af37;
-            opacity: 0.4;
-            animation: cornerPulse 2s ease-in-out infinite;
+            opacity: 0.15;
+            animation: rotate 20s linear infinite;
         }
 
-        .decorative-corner::before {
-            content: '';
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            width: 20px;
-            height: 20px;
-            background: #d4af37;
-            border-radius: 50%;
-        }
-
-        @keyframes cornerPulse {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 0.8; }
-        }
-
-        .decorative-corner-bottom {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
+        .flower-decoration.top-right {
+            top: 15px;
+            right: 15px;
             width: 80px;
             height: 80px;
-            border-bottom: 4px solid #d4af37;
-            border-left: 4px solid #d4af37;
-            opacity: 0.4;
-            animation: cornerPulse 2s ease-in-out infinite 1s;
         }
 
-        .decorative-corner-bottom::before {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: -4px;
-            width: 15px;
-            height: 15px;
-            background: #d4af37;
-            border-radius: 50%;
-        }
-
-        .scissors-icon {
-            position: absolute;
-            top: 25px;
-            left: 25px;
-            width: 50px;
-            height: 50px;
-            opacity: 0.15;
-            animation: rotate 10s linear infinite;
+        .flower-decoration.bottom-left {
+            bottom: 15px;
+            left: 15px;
+            width: 60px;
+            height: 60px;
+            animation-direction: reverse;
         }
 
         @keyframes rotate {
@@ -147,40 +115,152 @@
             to { transform: rotate(360deg); }
         }
 
+        .heart-sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: heartFloat 3s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        .heart-sparkle:nth-child(1) {
+            top: 20%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .heart-sparkle:nth-child(2) {
+            top: 50%;
+            right: 20%;
+            animation-delay: 1s;
+        }
+
+        .heart-sparkle:nth-child(3) {
+            bottom: 25%;
+            left: 25%;
+            animation-delay: 2s;
+        }
+
+        @keyframes heartFloat {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(0) scale(0.5);
+            }
+            50% {
+                opacity: 0.6;
+                transform: translateY(-20px) scale(1);
+            }
+        }
+
+        .decorative-border {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            border-top: 4px solid #ff69b4;
+            border-right: 4px solid #ff69b4;
+            border-radius: 0 20px 0 0;
+            opacity: 0.4;
+            animation: borderPulse 3s ease-in-out infinite;
+        }
+
+        .decorative-border::before,
+        .decorative-border::after {
+            content: '';
+            position: absolute;
+            background: #ff69b4;
+            border-radius: 50%;
+        }
+
+        .decorative-border::before {
+            top: -8px;
+            right: -8px;
+            width: 16px;
+            height: 16px;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+        }
+
+        .decorative-border::after {
+            top: 15px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+        }
+
+        @keyframes borderPulse {
+            0%, 100% { 
+                opacity: 0.4;
+                box-shadow: 0 0 0 rgba(255, 105, 180, 0);
+            }
+            50% { 
+                opacity: 0.8;
+                box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+            }
+        }
+
+        .decorative-border-bottom {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 80px;
+            height: 80px;
+            border-bottom: 4px solid #ff69b4;
+            border-left: 4px solid #ff69b4;
+            border-radius: 0 0 0 20px;
+            opacity: 0.4;
+            animation: borderPulse 3s ease-in-out infinite 1.5s;
+        }
+
+        .decorative-border-bottom::before {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: -8px;
+            width: 16px;
+            height: 16px;
+            background: #ff69b4;
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+        }
+
         .brand-name {
-            font-size: 42px;
+            font-size: 48px;
             font-weight: bold;
-            background: linear-gradient(135deg, #1a1a2e 0%, #4a4a5e 100%);
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 50%, #ff85c1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 8px;
-            letter-spacing: 3px;
+            margin-bottom: 10px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            filter: drop-shadow(2px 2px 4px rgba(255, 105, 180, 0.3));
             animation: titleGlow 3s ease-in-out infinite;
             position: relative;
             z-index: 1;
+            font-family: 'Brush Script MT', cursive;
         }
 
         @keyframes titleGlow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.2); }
+            0%, 100% { filter: drop-shadow(2px 2px 4px rgba(255, 105, 180, 0.3)); }
+            50% { filter: drop-shadow(2px 2px 12px rgba(255, 105, 180, 0.6)); }
         }
 
         @media (max-width: 768px) {
             .brand-name {
-                font-size: 32px;
+                font-size: 36px;
                 letter-spacing: 2px;
             }
         }
 
         .brand-tagline {
-            font-size: 16px;
-            color: #d4af37;
+            font-size: 18px;
+            background: linear-gradient(90deg, #ff69b4, #ff85c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 30px;
             font-style: italic;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 600;
             position: relative;
@@ -189,29 +269,30 @@
 
         @media (max-width: 768px) {
             .brand-tagline {
-                font-size: 14px;
-                margin-bottom: 20px;
+                font-size: 15px;
+                margin-bottom: 25px;
             }
         }
 
         .divider {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #d4af37, transparent);
-            margin: 20px 0;
-            border-radius: 2px;
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, #ff69b4, #ffc0cb, transparent);
+            margin: 25px 0;
+            border-radius: 3px;
             animation: expandDivider 2s ease-in-out infinite;
             position: relative;
             z-index: 1;
+            box-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
         }
 
         @keyframes expandDivider {
-            0%, 100% { width: 80px; }
-            50% { width: 100px; }
+            0%, 100% { width: 100px; }
+            50% { width: 120px; }
         }
 
         .info-section {
-            margin-top: 20px;
+            margin-top: 25px;
             position: relative;
             z-index: 1;
         }
@@ -219,13 +300,16 @@
         .info-item {
             display: flex;
             align-items: center;
-            margin-bottom: 18px;
-            color: #333;
-            padding: 8px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease-out forwards;
+            margin-bottom: 20px;
+            color: #4a4a4a;
+            padding: 12px 15px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 240, 250, 0.5) 100%);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0;
+            backdrop-filter: blur(10px);
         }
 
         .info-item:nth-child(1) {
@@ -252,28 +336,31 @@
         }
 
         .info-item:hover {
-            background: rgba(212, 175, 55, 0.1);
-            transform: translateX(5px);
+            background: linear-gradient(135deg, rgba(255, 240, 250, 0.8) 0%, rgba(255, 182, 193, 0.3) 100%);
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.25);
+            border-color: rgba(255, 105, 180, 0.5);
         }
 
         .icon {
-            width: 28px;
-            height: 28px;
-            margin-right: 15px;
-            color: #d4af37;
+            width: 30px;
+            height: 30px;
+            margin-right: 18px;
+            color: #ff69b4;
             flex-shrink: 0;
-            filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.3));
-            animation: iconBounce 2s ease-in-out infinite;
+            filter: drop-shadow(0 2px 6px rgba(255, 105, 180, 0.4));
+            animation: iconPulse 2s ease-in-out infinite;
         }
 
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-3px); }
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .info-text {
             font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.7;
+            color: #5a5a5a;
         }
 
         @media (max-width: 768px) {
@@ -283,73 +370,74 @@
         }
 
         .phone {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
-            background: linear-gradient(135deg, #1a1a2e 0%, #d4af37 100%);
+            background: linear-gradient(135deg, #ff1493 0%, #ff69b4 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            filter: drop-shadow(0 2px 4px rgba(255, 105, 180, 0.3));
         }
 
-        .sparkle {
+        .butterfly {
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #d4af37;
-            border-radius: 50%;
-            animation: sparkleAnimation 3s ease-in-out infinite;
-            opacity: 0;
+            font-size: 24px;
+            animation: butterflyFly 8s ease-in-out infinite;
+            opacity: 0.3;
         }
 
-        .sparkle:nth-child(1) {
-            top: 15%;
-            left: 20%;
+        .butterfly:nth-child(1) {
+            top: 30%;
             animation-delay: 0s;
         }
 
-        .sparkle:nth-child(2) {
-            top: 40%;
-            right: 15%;
-            animation-delay: 1s;
+        .butterfly:nth-child(2) {
+            bottom: 40%;
+            animation-delay: 4s;
         }
 
-        .sparkle:nth-child(3) {
-            bottom: 30%;
-            left: 15%;
-            animation-delay: 2s;
-        }
-
-        .sparkle:nth-child(4) {
-            top: 60%;
-            right: 25%;
-            animation-delay: 1.5s;
-        }
-
-        @keyframes sparkleAnimation {
+        @keyframes butterflyFly {
             0%, 100% {
+                left: -30px;
                 opacity: 0;
-                transform: scale(0);
+            }
+            10%, 90% {
+                opacity: 0.3;
             }
             50% {
-                opacity: 1;
-                transform: scale(1);
+                left: 100%;
+                opacity: 0.3;
             }
         }
     </style>
 </head>
 <body>
     <div class="card">
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
-        <div class="sparkle"></div>
+        <div class="heart-sparkle">💕</div>
+        <div class="heart-sparkle">✨</div>
+        <div class="heart-sparkle">💖</div>
         
-        <svg class="scissors-icon" viewBox="0 0 24 24" fill="#d4af37">
-            <path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4S2 3.79 2 6s1.79 4 4 4c.59 0 1.14-.13 1.64-.36L10 12l-2.36 2.36C7.14 14.13 6.59 14 6 14c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64L12 14l7 7h3v-1L9.64 7.64zM6 8c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zM19 3l-6 6 2 2 7-7V3z"/>
+        <div class="butterfly">🦋</div>
+        <div class="butterfly">🦋</div>
+        
+        <svg class="flower-decoration top-right" viewBox="0 0 100 100" fill="#ff69b4">
+            <circle cx="50" cy="50" r="15"/>
+            <circle cx="30" cy="40" r="12"/>
+            <circle cx="70" cy="40" r="12"/>
+            <circle cx="40" cy="65" r="12"/>
+            <circle cx="60" cy="65" r="12"/>
         </svg>
         
-        <div class="decorative-corner"></div>
-        <div class="decorative-corner-bottom"></div>
+        <svg class="flower-decoration bottom-left" viewBox="0 0 100 100" fill="#ffb6e0">
+            <circle cx="50" cy="50" r="12"/>
+            <circle cx="35" cy="45" r="10"/>
+            <circle cx="65" cy="45" r="10"/>
+            <circle cx="45" cy="65" r="10"/>
+            <circle cx="55" cy="65" r="10"/>
+        </svg>
+        
+        <div class="decorative-border"></div>
+        <div class="decorative-border-bottom"></div>
         
         <div class="brand-name">BALLENZA</div>
         <div class="brand-tagline">Saloons & Academy</div>
@@ -381,8 +469,8 @@
                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                 </svg>
                 <div class="info-text" style="font-style: italic;">
-                    Professional Hair & Beauty Services<br>
-                    Expert Training Academy
+                    💇‍♀️ Professional Hair & Beauty Services<br>
+                    ✨ Expert Training Academy
                 </div>
             </div>
         </div>
